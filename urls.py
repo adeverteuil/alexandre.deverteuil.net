@@ -8,6 +8,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'alexdev.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^blogue/', include('blog.urls')),
+    url(r'^blogue/', include('blog.urls', namespace="blog")),
     url(r'^admin/', include(admin.site.urls)),
 )
