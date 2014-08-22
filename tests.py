@@ -18,3 +18,17 @@ class PostMethodTests(TestCase):
         self.assertEqual(p1.id, p2.id)
         self.assertEqual(p1.pub_date, p2.pub_date)
         self.assertEqual(p1.body, p2.body)
+
+    def test_mod_date(self):
+        p1 = Post(
+            title="foo title",
+            pub_date=datetime.datetime(2014, 8, 1),
+            body="This is the content",
+            )
+        p1.save()
+        self.assertEqual(p1.mod_date(), p1.pub_date, msg=p1.mod_date())
+        p2 = Post.objects.get(pk=p1.id)
+        p2.body = "New content now."
+        p2.save()
+        p3 = Post.objects.get(pk=p1.id)
+        self.assertNotEqual(p3.mod_date, p3.pub_date)
