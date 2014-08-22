@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block htmltitle %}{% endblock %}Alexandre de Verteuil</title>
+</head>
+
+<body>
+<header>
+    <h1>{% block pagetitle %}{% endblock %}</h1>
+    <p>{% block subtitle %}{% endblock %}</p>
+</header>
+{% block content %}{% endblock %}
+</body>
+</html>

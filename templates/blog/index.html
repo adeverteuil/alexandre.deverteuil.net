@@ -1,9 +1,23 @@
+{% extends "blog/base_blog.html" %}
+
+{% block htmltitle %}Blogue - {% endblock %}
+{% block pagetitle %}Alexandre de Verteuil{% endblock %}
+{% block subtitle %}Blogue{% endblock %}
+
+{% block content %}
 {% if latest_post_list %}
-    <ul>
+    <div>
     {% for post in latest_post_list %}
-        <li><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></li>
+        <h3><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h3>
+        <p>
+            <b>{{ post.pub_date }}</b>
+            {% if post.summary %}
+            <br />{{ post.summary }}
+            {% endif %}
+        </p>
     {% endfor %}
-    </ul>
+    </div>
 {% else %}
     <p>No posts are available.</p>
 {% endif %}
+{% endblock content %}

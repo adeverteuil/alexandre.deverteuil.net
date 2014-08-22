@@ -1,6 +1,11 @@
-<p><a href="{% url 'blog:index' %}">&lt;-back to blog index</a></p>
+{% extends "blog/base_blog.html" %}
 
-<h1>{{ post.title }}</h1>
-<p>{{ post.pub_date }}</p>
+{% block htmltitle %}{{ post.title }} - {% endblock %}
+{% block pagetitle %}{{ post.title }}{% endblock %}
+{% block subtitle %}{{ post.pub_date }}{% endblock %}
 
-{{ post.body }}
+{% block content %}
+<article>
+{{ post.body|safe }}
+</article>
+{% endblock content %}
