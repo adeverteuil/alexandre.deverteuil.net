@@ -1,20 +1,25 @@
 {% extends "blog/base_blog.html" %}
 
-{% block htmltitle %}Blogue - {% endblock %}
-{% block pagetitle %}Alexandre de Verteuil{% endblock %}
-{% block subtitle %}Blogue{% endblock %}
+{% block htmltitle %}Blogue &mdash; {% endblock %}
+{% block description %}Le blogue personnel d'Alexandre de Verteuil{% endblock %}
+{% block headertitle %}Blogue{% endblock %}
+{% block headerdate %}
+    {% if latest_post_list %}
+        {{ latest_post_list.0.pub_date|date }}
+    {% endif %}
+{% endblock %}
 
 {% block content %}
 {% if latest_post_list %}
     <div>
     {% for post in latest_post_list %}
-        <h3><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h3>
-        <p>
-            <b>{{ post.pub_date }}</b>
-            {% if post.summary %}
-            <br />{{ post.summary }}
-            {% endif %}
-        </p>
+        <div>
+            <span>{{ post.pub_date|date }}</span> &mdash;
+            <span title="{{ post.summary }}"><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></span>
+            {% for category in post.categories.all %}
+                <span>#{{ category.name }}</span>
+            {% endfor %}
+        </div>
     {% endfor %}
     </div>
 {% else %}

@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="utf-8" />
     <title>{% block htmltitle %}{% endblock %}Alexandre de Verteuil</title>
+    <meta name="description" content="{% block description %}{% endblock %}" />
 </head>
 
 <body>
 <header>
-    <h1>{% block pagetitle %}{% endblock %}</h1>
-    <p>{% block subtitle %}{% endblock %}</p>
+    <h1>{% block headertitle %}{% endblock %}</h1>
+    <div>{% block headerdate %}{% endblock %}</div>
+    <div>{% block headersite %}Alexandre de Verteuil{% endblock %}</div>
 </header>
-{% block content %}{% endblock %}
+{% block body %}{% endblock %}
 </body>
 </html>

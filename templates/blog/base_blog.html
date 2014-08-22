@@ -1,8 +1,5 @@
 {% extends "base.html" %}
 
-<nav>
-    <p>
-        <a href="{% url 'blog:index' %}">&lt;-back to blog index</a>
-    </p>
-</nav>
+{% block body %}
 {% block content %}{% endblock %}
+{% endblock body %}
