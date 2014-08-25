@@ -1,4 +1,5 @@
 {% extends "blog/base_blog.html" %}
+{% load filename %}
 
 {% block htmltitle %}{{ post.title }} &mdash; {% endblock %}
 {% block headertitle %}{{ post.title }}{% endblock %}
@@ -7,6 +8,6 @@
 
 {% block content %}
 <article>
-{{ post.body|safe }}
+{{ post.body|filename|safe }}
 </article>
 {% endblock content %}
