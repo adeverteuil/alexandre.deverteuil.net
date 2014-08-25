@@ -11,17 +11,17 @@
 
 {% block content %}
 {% if latest_post_list %}
-    <div>
+    <ul>
     {% for post in latest_post_list %}
-        <div>
+        <li>
             <span>{{ post.pub_date|date }}</span> &mdash;
             <span title="{{ post.summary }}"><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></span>
             {% for category in post.categories.all %}
                 <span>#{{ category.name }}</span>
             {% endfor %}
-        </div>
+        </li>
     {% endfor %}
-    </div>
+    </ul>
 {% else %}
     <p>No posts are available.</p>
 {% endif %}
