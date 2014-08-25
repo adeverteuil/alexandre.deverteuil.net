@@ -16,6 +16,7 @@ class Category(models.Model):
 class Post(models.Model):
 
     title = models.CharField(max_length=256)
+    slug = models.SlugField()
     pub_date = models.DateTimeField("date published")
     body = models.TextField()
     summary = models.TextField(null=True, blank=True)
