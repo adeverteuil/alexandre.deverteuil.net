@@ -67,7 +67,7 @@ def parse(filename):
                 if line == "</body>\n":
                     in_body = False
                 else:
-                    line = line.replace("|filename|/", "|filename|")
+                    line = line.replace("|filename|/", "|media_url|")
                     body_lines.append(line)
             elif line == "<body>\n":
                 in_body = True
