@@ -1,9 +1,6 @@
 from django.db import models
+from django.contrib.flatpages.models import FlatPage
 
-class Page(models.Model):
+class Page(FlatPage):
     
-    title = models.CharField(max_length=64)
-    slug = models.SlugField()
-    body = models.TextField()
-    public = models.BooleanField(default=False)
     description = models.TextField()

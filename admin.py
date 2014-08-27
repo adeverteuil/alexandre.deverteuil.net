@@ -1,11 +1,13 @@
 from django.contrib import admin
+from django.contrib.flatpages.admin import FlatPageAdmin
+from django.contrib.flatpages.models import FlatPage
 
 from pages.models import Page
 
-class PageAdmin(admin.ModelAdmin):
+class PageAdmin(FlatPageAdmin):
+    FlatPageAdmin.fieldsets[0][1]['fields'] = (
+        'url', 'title', 'description', 'content', 'sites'
+        )
 
-    list_display = ("title", "slug", "public")
-    prepopulated_fields = {"slug": ("title",)}
-
-
+admin.site.unregister(FlatPage)
 admin.site.register(Page, PageAdmin)
