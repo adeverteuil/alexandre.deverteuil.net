@@ -36,7 +36,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.redirects',
+    'django.contrib.flatpages',
     'blog',
+    'pages',
+    'south',
+    'dry_urls',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -46,6 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'alexdev.urls'
@@ -68,7 +75,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Montreal'
 
 USE_I18N = True
 
@@ -76,8 +83,31 @@ USE_L10N = True
 
 USE_TZ = False
 
+DATE_FORMAT = "Y-m-d"
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Media files
+# https://docs.djangoproject.com/en/1.6/topics/files/
+# https://docs.djangoproject.com/en/1.6/howto/static-files/#serving-uploaded-files-in-development
+
+MEDIA_ROOT = "/home/alex/src/alexdev/media_root"
+MEDIA_URL = "/media/"
+
+
+# Sites framework
+
+SITE_ID = 1
+
+
+# Template directories
+# https://docs.djangoproject.com/en/1.6/ref/templates/api/#the-template-dirs-setting
+
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(__file__), "templates"),
+    )
