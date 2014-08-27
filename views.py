@@ -10,8 +10,9 @@ class IndexView(generic.ListView):
     context_object_name = "latest_post_list"
 
     def get_queryset(self):
-        """Return the last five published posts."""
-        return Post.objects.order_by("-pub_date")
+        """Return the published posts."""
+        posts = Post.objects.order_by("-pub_date")
+        return [post for post in posts if post.is_published()]
 
 
 class DetailView(generic.DetailView):

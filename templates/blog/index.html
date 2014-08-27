@@ -1,28 +1,20 @@
 {% extends "blog/base_blog.html" %}
 
-{% block htmltitle %}Blogue &mdash; {% endblock %}
+{% block htmltitle %}Blogue{% endblock %}
 {% block description %}Le blogue personnel d'Alexandre de Verteuil{% endblock %}
 {% block headertitle %}Blogue{% endblock %}
-{% block headerdate %}
-    {% if latest_post_list %}
-        {{ latest_post_list.0.pub_date|date }}
-    {% endif %}
-{% endblock %}
-
-{% block content %}
 {% if latest_post_list %}
-    <ul>
-    {% for post in latest_post_list %}
+    {% block headerdate %}{{ latest_post_list.0.pub_date|date }}{% endblock %}
+{% endif %}
+
+{% block content %}{% if latest_post_list %}
+<section>
+    <ul>{% for post in latest_post_list %}
         <li>
             <span>{{ post.pub_date|date }}</span> &mdash;
-            <span title="{{ post.summary }}"><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></span>
-            {% for category in post.categories.all %}
-                <span>#{{ category.name }}</span>
-            {% endfor %}
-        </li>
-    {% endfor %}
+            <span title="{{ post.summary }}"><a href="{% url 'blog:detail' post.slug %}">{{ post.title }}</a></span>{% for category in post.categories.all %}
+            <span>#{{ category.name }}</span>{% endfor %}
+        </li>{% endfor %}
     </ul>
-{% else %}
-    <p>No posts are available.</p>
-{% endif %}
-{% endblock content %}
+</section>
+{% else %}<p>No posts are available.</p>{% endif %}{% endblock content %}

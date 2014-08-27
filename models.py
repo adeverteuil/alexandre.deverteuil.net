@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 import django.contrib.admin.models
 
@@ -22,6 +24,9 @@ class Post(models.Model):
     summary = models.TextField(null=True, blank=True)
     public = models.BooleanField(default=False)
     categories = models.ManyToManyField(Category, null=True, blank=True)
+
+    def is_published(self):
+        return self.public and self.pub_date <= datetime.datetime.now()
 
     def mod_date(self):
         """Retrieve last modification date from the admin module's log."""

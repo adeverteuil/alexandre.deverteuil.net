@@ -3,7 +3,11 @@ import re
 from pprint import pprint
 
 from django.core.management.base import BaseCommand, CommandError
+from django.contrib.redirects.models import Redirect
+from django.conf import settings
+
 from blog.models import Post, Category
+from blog.management.make_slugs import urlify
 
 
 class Command(BaseCommand):
@@ -16,26 +20,26 @@ class Command(BaseCommand):
             self.stdout.write("Reading {}".format(filename))
             defaults = parse(filename)
             categories = defaults.pop('categories')
-            title = defaults.pop('title')
+            slug = defaults.pop('slug')
             #print(title)
             #print(categories)
             #pprint(defaults)
             # Implement update_or_create only available when 1.7 is out.
             try:
-                post = Post.objects.get(title=title)
+                post = Post.objects.get(slug=slug)
                 for key, value in defaults.items():
                     setattr(post, key, value)
                 post.save()
                 self.stdout.write("Updated article {}".format(post.title))
             except Post.DoesNotExist:
-                defaults.update({'title': title})
+                defaults.update({'slug': slug})
                 post = Post(**defaults)
                 post.save()
                 self.stdout.write("Created article {}".format(post.title))
             for cat_name in categories:
                 try:
                     post.categories.get(name=cat_name)
-                    self.stdout.write("Fount category {}.".format(cat_name))
+                    self.stdout.write("Found category {}.".format(cat_name))
                 except Category.DoesNotExist:
                     try:
                         category = Category.objects.get(name=cat_name)
@@ -48,6 +52,29 @@ class Command(BaseCommand):
                         self.stdout.write(
                             "Created category {}".format(cat_name)
                             )
+            # Now do the redirects.
+            # the Redirect model has an old_path, a new_path, and a site_id.
+            # use settings.SITE_ID
+            old_path = "/blogue/" + post.slug + ".html"
+            new_path = "/blogue/" + post.slug + "/"
+            defaults = {
+                'site_id': settings.SITE_ID,
+                'old_path': old_path,
+                }
+            try:
+                redirect = Redirect.objects.get(**defaults)
+                redirect.new_path = new_path
+                redirect.save()
+                self.stdout.write(
+                    "Updated redirect {} ==> {}".format(old_path, new_path)
+                    )
+            except Redirect.DoesNotExist:
+                defaults.update({'new_path': new_path})
+                redirect = Redirect(**defaults)
+                redirect.save()
+                self.stdout.write(
+                    "Created redirect {} ==> {}".format(old_path, new_path)
+                    )
 
 
 def parse(filename):
@@ -97,4 +124,5 @@ def parse(filename):
                     r"(?<=contents=\")[^\"]*(?=\" ?/>)", line
                     ).group().split(", ")
         defaults['body'] = "".join(body_lines)
+        defaults['slug'] = urlify(defaults['title'])
         return defaults
