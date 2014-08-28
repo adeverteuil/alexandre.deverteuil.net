@@ -6,6 +6,7 @@
 {% if latest_post_list %}
     {% block headerdate %}{{ latest_post_list.0.pub_date|date }}{% endblock %}
 {% endif %}
+{% block navblog %}Blogue{% endblock %}
 
 {% block content %}{% if latest_post_list %}
 <section>
