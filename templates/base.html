@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+<head><!-- Look at this code. Look at it! -->
     <meta charset="utf-8" />
     <title>{% block htmltitle %}Untitled{% endblock %} &mdash; Alexandre de Verteuil</title>
     <meta name="description" content="{% block description %}{% endblock %}" />
@@ -11,7 +11,13 @@
     <div>{% block headerdate %}{% endblock %}</div>
     <div>{% block headersite %}Alexandre de Verteuil{% endblock %}</div>
 </header>
-<hr />{% block body %}{% endblock %}<hr />
+<hr /><!-- \\\\\\\\\\\\\\\\\\\\   nav   //////////////////// -->
+<nav>
+    {% block navhome %}<a href="/">Accueil</a>{% endblock %}{% block crumbshome %}{% endblock %} |
+    {% block navblog %}<a href="/blogue/">Blogue</a>{% endblock %}{% block crumbsblog %}{% endblock %} |
+    {% block navpages %}<a href="/pages/">Pages</a>{% endblock %}{% block crumbspages %}{% endblock %}
+</nav>
+<hr /><!-- \\\\\\\\\\\\\\\\\\\\ article //////////////////// -->{% block body %}{% endblock %}<hr /><!-- \\\\\\\\\\\\\\\\\\\\ footer  //////////////////// -->
 <footer>
 Copyright © 2014, Alexandre de Verteuil
 </footer>

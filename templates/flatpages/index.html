@@ -1,0 +1,4 @@
+{% extends "flatpages/default.html" %}
+
+{% block navpages %}{% ifequal flatpage.url "/pages/" %}Pages{% else %}{{ block.super }}{% endifequal %}{% endblock %}
+{% block navhome %}{% ifequal flatpage.url "/" %}Accueil{% else %}{{ block.super }}{% endifequal %}{% endblock %}
