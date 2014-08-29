@@ -13,6 +13,8 @@ make_not_public.short_description = "Mark as private"
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ("title", "summary", "pub_date", "public")
+    list_editable = ("summary", "public")
+    ordering = ("-pub_date",)
     prepopulated_fields = {"slug": ("title",)}
     actions = [make_public, make_not_public]
     date_hierarchy = "pub_date"
