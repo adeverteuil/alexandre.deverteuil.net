@@ -15,6 +15,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ("title", "summary", "pub_date", "public")
     prepopulated_fields = {"slug": ("title",)}
     actions = [make_public, make_not_public]
+    date_hierarchy = "pub_date"
 
 
 admin.site.register(Post, PostAdmin)
