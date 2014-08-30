@@ -3,4 +3,4 @@ from django.contrib.flatpages.models import FlatPage
 
 class Page(FlatPage):
     
-    description = models.TextField()
+    description = models.CharField(max_length=256)
