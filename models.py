@@ -21,7 +21,7 @@ class Post(models.Model):
     slug = models.SlugField()
     pub_date = models.DateTimeField("date published")
     body = models.TextField()
-    summary = models.TextField(null=True, blank=True)
+    summary = models.CharField(max_length=256, null=True, blank=True)
     public = models.BooleanField(default=False)
     categories = models.ManyToManyField(Category, null=True, blank=True)
 
