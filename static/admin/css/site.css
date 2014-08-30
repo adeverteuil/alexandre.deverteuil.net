@@ -6,3 +6,9 @@
 #changelist-form .vTextField {
     width: 500px;
     }
+
+/* For textarea input fields. */
+.vLargeTextField {
+    font-family: inconsolata, monospace;
+    font-size: 10pt;
+    }
