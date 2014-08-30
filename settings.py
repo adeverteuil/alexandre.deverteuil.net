@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PRODUCTION_DIR = "/srv/http/alexandre.deverteuil.net/alexdev"
 
 
 # Quick-start development settings - unsuitable for production
@@ -19,12 +20,40 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'c8$2^a5+(-p^p&=v(sm0n9kl6-w9achks%ine^1jy1za))dn+c'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if BASE_DIR == PRODUCTION_DIR:
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = TEMPLATE_DEBUG = False
+    ALLOWED_HOSTS = [
+        "alexandre.deverteuil.net",
+        "localhost",
+        "198.58.102.179",
+        ]
+    ADMINS = (('Alexandre de Verteuil', 'alexandre@deverteuil.net'),)
+    MANAGERS = ADMINS
+    SERVER_EMAIL = "http@baryon"
+    DATABASES = {
+        'default': {
+            'ENGINE': "django.db.backends.postgresql_psycopg2",
+            'NAME': "alexdev",
+            'USER': "alexandre.deverteuil.net",
+            'PASSWORD': "87a6sdf6g5xcvb67786",
+        }
+    }
+else:
+    # Options for the development server.
+    DEBUG = True
+    TEMPLATE_DEBUG = True
+    ALLOWED_HOSTS = []
 
-TEMPLATE_DEBUG = True
+    # Database
+    # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-ALLOWED_HOSTS = []
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Application definition
@@ -60,16 +89,6 @@ ROOT_URLCONF = 'alexdev.urls'
 WSGI_APPLICATION = 'alexdev.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -89,6 +108,7 @@ DATE_FORMAT = "Y-m-d"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 STATIC_URL = '/static/'
 
 
@@ -96,7 +116,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/1.6/topics/files/
 # https://docs.djangoproject.com/en/1.6/howto/static-files/#serving-uploaded-files-in-development
 
-MEDIA_ROOT = "/home/alex/src/alexdev/media_root"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media_root")
 MEDIA_URL = "/media/"
 
 
@@ -109,5 +129,5 @@ SITE_ID = 1
 # https://docs.djangoproject.com/en/1.6/ref/templates/api/#the-template-dirs-setting
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), "templates"),
+    os.path.join(BASE_DIR, "alexdev", "templates"),
     )
