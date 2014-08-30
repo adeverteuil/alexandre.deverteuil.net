@@ -110,6 +110,9 @@ DATE_FORMAT = "Y-m-d"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "alexdev/static"),
+    )
 
 
 # Media files
