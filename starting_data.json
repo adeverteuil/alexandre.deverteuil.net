@@ -1,0 +1,110 @@
+[
+{
+    "pk": 1,
+    "model": "pages.page",
+    "fields": {
+        "sites": [
+            1
+        ],
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    }
+},
+{
+    "pk": 4,
+    "model": "pages.page",
+    "fields": {
+        "sites": [
+            1
+        ],
+        "description": "Please provide the description."
+    }
+},
+{
+    "pk": 2,
+    "model": "pages.page",
+    "fields": {
+        "sites": [
+            1
+        ],
+        "description": "No description yet."
+    }
+},
+{
+    "pk": 7,
+    "model": "pages.page",
+    "fields": {
+        "sites": [
+            1
+        ],
+        "description": "Description de moi."
+    }
+},
+{
+    "pk": 1,
+    "model": "flatpages.flatpage",
+    "fields": {
+        "registration_required": false,
+        "sites": [
+            1
+        ],
+        "enable_comments": false,
+        "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean auctor quis ipsum in luctus. Aenean vel quam sed lacus volutpat ornare. Donec dictum nibh vitae ipsum lacinia aliquet. Pellentesque in tempor magna. Curabitur quam odio, vestibulum ac tincidunt pellentesque, vehicula non quam. Ut elementum purus metus, at elementum nulla facilisis ac. Phasellus vitae massa sodales, sodales nunc vitae, ullamcorper metus. Pellentesque venenatis enim sit amet augue congue congue.</p>",
+        "title": "Accueil",
+        "url": "/",
+        "template_name": "flatpages/index.html"
+    }
+},
+{
+    "pk": 2,
+    "model": "flatpages.flatpage",
+    "fields": {
+        "registration_required": false,
+        "sites": [
+            1
+        ],
+        "enable_comments": false,
+        "content": "<p>Placeholder text</p>",
+        "title": "\u00c0 propos",
+        "url": "/pages/about/",
+        "template_name": ""
+    }
+},
+{
+    "pk": 4,
+    "model": "flatpages.flatpage",
+    "fields": {
+        "registration_required": false,
+        "sites": [
+            1
+        ],
+        "enable_comments": false,
+        "content": "<p>Lorem ipsum and shit. List your pages here.</p>\r\n<ul>\r\n    <li><a href=\"/pages/about/me/\">About me</a></li>\r\n</ul>",
+        "title": "Pages",
+        "url": "/pages/",
+        "template_name": "flatpages/index.html"
+    }
+},
+{
+    "pk": 7,
+    "model": "flatpages.flatpage",
+    "fields": {
+        "registration_required": false,
+        "sites": [
+            1
+        ],
+        "enable_comments": false,
+        "content": "<p>Je m'appelle Alexandre.</p>",
+        "title": "Moi",
+        "url": "/pages/about/me/",
+        "template_name": ""
+    }
+},
+{
+    "pk": 1,
+    "model": "sites.site",
+    "fields": {
+        "name": "Alexandre de Verteuil",
+        "domain": "alexandre.deverteuil.net"
+    }
+}
+]
