@@ -15,7 +15,13 @@ class PostAdmin(admin.ModelAdmin):
 
     list_display = ("title", "summary", "format_date", "public")
     list_editable = ("summary", "public")
-    fields = (("title", "pub_date"), ("slug", "public"), "summary", "body")
+    fields = (
+        ("title", "pub_date"),
+        ("slug", "public"),
+        "summary",
+        "body",
+        "categories",
+        )
     ordering = ("-pub_date",)
     prepopulated_fields = {"slug": ("title",)}
     actions = [make_public, make_not_public]
