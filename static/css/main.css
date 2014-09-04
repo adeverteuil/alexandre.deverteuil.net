@@ -115,8 +115,17 @@ header {
  * Bullet-less list on blog index.
  */
 
-ul#blog_index > li {
+ul.no_bullets > li {
     list-style-type: none;
+}
+
+/*
+ * Small and pale green tags on blog index
+ */
+
+ul#blog_index span.tag {
+    color: #8a8;
+    font-size: .7em;
 }
 
 /*
@@ -149,6 +158,19 @@ img.thumb {
 }
 
 /*
+ * Divs surrounding images with optional caption.
+ */
+
+.figure {
+    display: inline-block;
+    text-align: center;
+    border: 1px solid #667f50;
+    padding: 8px;
+    margin: 4px;
+    vertical-align: top;
+}
+
+/*
  * Code listings
  */
 
@@ -174,6 +196,26 @@ code {
     color: #000;
 }
 
+/*
+ * Table formatting for boitier-dordinateur-en-bois
+ */
+
+table.inbody {
+    border-collapse: collapse;
+    border-width: 2px 0px;
+    border-style: solid;
+    background-color: lightyellow;
+}
+
+.inbody td, .inbody th {
+    padding: 2px 15px;
+    border-width: 1px 0px;
+    border-style: solid;
+}
+
+td.ralign, th.ralign {
+    text-align: right;
+}
 
 
 
