@@ -217,6 +217,18 @@ td.ralign, th.ralign {
     text-align: right;
 }
 
+/*
+ * Center-aligns text in blocks with this class.
+ */
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+
 
 
 
