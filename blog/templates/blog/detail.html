@@ -1,0 +1,14 @@
+{% extends "blog/base_blog.html" %}
+{% load dry_urls %}
+
+{% block htmltitle %}{{ post.title }}{% endblock %}
+{% block headertitle %}{{ post.title }}{% endblock %}
+{% block headerdate %}{{ post.pub_date|date }}{% endblock %}
+{% block description %}{{ post.summary }}{% endblock %}
+{% block crumbsblog %} &gt; {{ post.title }}{% endblock %}
+
+{% block content %}
+<article>
+{{ post.body|dry_urls|safe }}
+</article>
+{% endblock content %}

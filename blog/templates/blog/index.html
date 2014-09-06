@@ -1,0 +1,21 @@
+{% extends "blog/base_blog.html" %}
+
+{% block htmltitle %}Blogue{% endblock %}
+{% block description %}Le blogue personnel d’Alexandre de Verteuil{% endblock %}
+{% block headertitle %}Blogue{% endblock %}
+{% if latest_post_list %}
+    {% block headerdate %}{{ latest_post_list.0.pub_date|date }}{% endblock %}
+{% endif %}
+{% block navblog %}Blogue{% endblock %}
+
+{% block content %}{% if latest_post_list %}
+<section>
+    <ul id="blog_index" class="no_bullets">{% for post in latest_post_list %}
+        <li>
+            <span>{{ post.pub_date|date }}</span> &mdash;
+            <span title="{{ post.summary }}"><a href="{% url 'blog:detail' post.slug %}">{{ post.title }}</a></span>{% for category in post.categories.all %}
+            <span class="tag">#{{ category.name }}</span>{% endfor %}
+        </li>{% endfor %}
+    </ul>
+</section>
+{% else %}<p>No posts are available.</p>{% endif %}{% endblock content %}
