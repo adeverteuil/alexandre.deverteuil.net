@@ -8,14 +8,15 @@
 {% endif %}
 {% block navblog %}Blogue{% endblock %}
 
-{% block content %}{% if latest_post_list %}
-<section>
+{% block content %}
+<section>{% if latest_post_list %}
     <ul id="blog_index" class="no_bullets">{% for post in latest_post_list %}
         <li>
             <span>{{ post.pub_date|date }}</span> &mdash;
             <span title="{{ post.summary }}"><a href="{% url 'blog:detail' post.slug %}">{{ post.title }}</a></span>{% for category in post.categories.all %}
             <span class="tag">#{{ category.name }}</span>{% endfor %}
         </li>{% endfor %}
-    </ul>
+    </ul>{% else %}
+    <p>No posts are available.</p>{% endif %}
 </section>
-{% else %}<p>No posts are available.</p>{% endif %}{% endblock content %}
+{% endblock content %}
