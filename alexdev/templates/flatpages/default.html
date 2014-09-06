@@ -1,0 +1,15 @@
+{% extends "flatpages/base_page.html" %}
+{% load dry_urls %}
+{% load breadcrumbs %}
+
+{% block htmltitle %}{{ flatpage.title }}{% endblock %}
+{% block headertitle %}{{ flatpage.title }}{% endblock %}
+{% block description %}{{ flatpage.page.description }}{% endblock %}
+
+{% block crumbspages %}{% breadcrumbs flatpage.url %}{% endblock %}
+
+{% block content %}
+<article>
+{{ flatpage.content|dry_urls|safe }}
+</article>
+{% endblock content %}

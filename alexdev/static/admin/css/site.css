@@ -1,0 +1,14 @@
+/* Make the text input box of the summary field wider. */
+#id_description, #id_summary {
+    width: 610px;
+    }
+
+#changelist-form .vTextField {
+    width: 500px;
+    }
+
+/* For textarea input fields. */
+.vLargeTextField {
+    font-family: inconsolata, monospace;
+    font-size: 10pt;
+    }
