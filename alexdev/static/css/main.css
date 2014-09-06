@@ -99,10 +99,11 @@ textarea {
 
 /*
  * The website's font.
+ * My site should never render in Arial.
  */
 
 html {
-    font-family: Corbel, "Free Sans", Verdana, sans-serif;
+    font-family: Corbel, "DejaVu Sans", Verdana, "Liberation Sans", Calibri, Helvetica, monospace;
     font-size: 20px;
     }
 
@@ -225,7 +226,7 @@ td.ralign, th.ralign {
  */
 
 pre {
-    font-family: inconsolata, Consolas, monospace;
+    font-family: Inconsolata, Consolas, monospace;
     font-size: 16px;
     line-height: 1em;
     background-color: #202028;
