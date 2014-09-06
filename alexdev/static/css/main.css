@@ -98,6 +98,15 @@ textarea {
    ========================================================================== */
 
 /*
+ * The website's font.
+ */
+
+html {
+    font-family: Corbel, "Free Sans", Verdana, sans-serif;
+    font-size: 20px;
+    }
+
+/*
  * Center the page with a width of 800px.
  */
 
@@ -171,23 +180,6 @@ img.thumb {
 }
 
 /*
- * Code listings
- */
-
-pre {
-    background-color:#EEE;
-    padding:2mm;
-    border-top:2px solid #999;
-    border-left:2px solid #999;
-    border-right:1px solid #CCC;
-    border-bottom:1px solid #CCC;
-}
-
-pre .comment {
-    color:#888;
-}
-
-/*
  * Inline code
  */
 
@@ -228,8 +220,48 @@ td.ralign, th.ralign {
     text-align: center;
 }
 
+/*
+ * Code listings
+ */
 
+pre {
+    font-family: inconsolata, Consolas, monospace;
+    font-size: 16px;
+    line-height: 1em;
+    background-color: #202028;
+    color: #bebebe;
+    padding:2mm;
+    border-top:2px solid #999;
+    border-left:2px solid #999;
+    border-right:1px solid #CCC;
+    border-bottom:1px solid #CCC;
+    }
 
+pre span.fg_color0, pre span.fg_black { color: #000000; }
+pre span.fg_color1, pre span.fg_red { color: #d36265; }
+pre span.fg_color2, pre span.fg_green { color: #aece91; }
+pre span.fg_color3, pre span.fg_yellow { color: #e7e18c; }
+pre span.fg_color4, pre span.fg_blue { color: #7a7ab0; }
+pre span.fg_color5, pre span.fg_magenta { color: #963c59; }
+pre span.fg_color6, pre span.fg_cyan { color: #7f9f7f; }
+pre span.fg_color7, pre span.fg_white { color: #bebebe; }
+pre span.fg_color8, pre span.fg_b_black, pre span.comment { color: #666666; font-weight: 700; }
+pre span.fg_color9, pre span.fg_b_red { color: #ef8171; font-weight: 700; }
+pre span.fg_color10, pre span.fg_b_green { color: #e5f779; font-weight: 700; }
+pre span.fg_color11, pre span.fg_b_yellow { color: #f0dfaf; font-weight: 700; }
+pre span.fg_color12, pre span.fg_b_blue { color: #8e9fbc; font-weight: 700; }
+pre span.fg_color13, pre span.fg_b_magenta { color: #ef9ebe; font-weight: 700; }
+pre span.fg_color14, pre span.fg_b_cyan { color: #71bebe; font-weight: 700; }
+pre span.fg_color15, pre span.fg_white { color: #ffffff; font-weight: 700; }
+
+pre span.bg_color0, pre span.bg_black { background-color: #000000; }
+pre span.bg_color1, pre span.bg_red { background-color: #d36265; }
+pre span.bg_color2, pre span.bg_green { background-color: #aece91; }
+pre span.bg_color3, pre span.bg_yellow { background-color: #e7e18c; }
+pre span.bg_color4, pre span.bg_blue { background-color: #7a7ab0; }
+pre span.bg_color5, pre span.bg_magenta { background-color: #963c59; }
+pre span.bg_color6, pre span.bg_cyan { background-color: #7f9f7f; }
+pre span.bg_color7, pre span.bg_white { background-color: #bebebe; }
 
 
 
