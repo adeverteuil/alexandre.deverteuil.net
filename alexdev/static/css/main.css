@@ -197,6 +197,7 @@ table.inbody {
     border-width: 2px 0px;
     border-style: solid;
     background-color: lightyellow;
+    font-size: .8em;
 }
 
 .inbody td, .inbody th {
