@@ -189,15 +189,6 @@ img.thumb {
 }
 
 /*
- * Inline code
- */
-
-code {
-    font-size: 12px;
-    color: #000;
-}
-
-/*
  * Table formatting for boitier-dordinateur-en-bois
  */
 
@@ -227,6 +218,15 @@ td.ralign, th.ralign {
     margin-right: auto;
     display: block;
     text-align: center;
+}
+
+/*
+ * Inline code
+ */
+
+code {
+    font-family: Inconsolata;
+    font-size: 16px;
 }
 
 /*
