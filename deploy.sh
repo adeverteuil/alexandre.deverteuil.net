@@ -30,4 +30,4 @@ echo Migrating database schemas and data.
 ssh $REMOTE_HOST cd $REMOTE_ROOT/$DJANGO_PROJECT \; python manage.py migrate
 
 echo Restarting web server.
-ssh root@$REMOTE_HOST sudo systemctl restart httpd
+ssh root@$REMOTE_HOST systemctl restart httpd
