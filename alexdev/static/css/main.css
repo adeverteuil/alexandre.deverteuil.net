@@ -108,6 +108,14 @@ html {
     }
 
 /*
+ * Reduce h1 margin-bottom.
+ */
+
+h1 {
+    margin: 0.67em 0px 0.2em;
+}
+
+/*
  * Center the page with a width of 800px.
  */
 
