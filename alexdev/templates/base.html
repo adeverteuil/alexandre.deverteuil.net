@@ -9,7 +9,7 @@
     <title>{% block htmltitle %}Untitled{% endblock %} &mdash; Alexandre de Verteuil</title>
     <meta name="description" content="{% block description %}{% endblock %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link href='http{% if request.is_secure %}s{% endif %}://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
     <script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>
