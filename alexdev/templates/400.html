@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{# https://duckduckgo.com/search_box #}
+
+{% block htmltitle %}Erreur 400{% endblock %}
+{% block headertitle %}Erreur 400 &mdash; Requête erronnée{% endblock %}
+{% block body %}
+<section>
+<h2>Français</h2>
+<p>Erreur 400&nbsp;: Requête erronnée.
+<p>La syntaxe de la requête est erronée.</p>
+<h2>English</h2>
+<p>Error 400: Bad Request.</p>
+<p>The request cannot be fulfilled due to bad syntax.</p>
+</section>
+{% endblock %}
