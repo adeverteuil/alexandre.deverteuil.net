@@ -257,6 +257,13 @@ pre {
     border-bottom:1px solid #CCC;
     }
 
+pre a:link {
+    color: inherit;
+}
+pre a:hover {
+    color: lightblue;
+}
+
 pre span.fg_color0, pre span.fg_black { color: #000000; }
 pre span.fg_color1, pre span.fg_red { color: #d36265; }
 pre span.fg_color2, pre span.fg_green { color: #aece91; }
