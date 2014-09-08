@@ -108,12 +108,21 @@ html {
     }
 
 /*
- * Reduce h1 margin-bottom.
+ * Reduce h1 margin-bottom and make small-caps.
  */
 
 h1 {
     margin: 0.67em 0px 0.2em;
+    font-variant: small-caps;
 }
+
+/*
+ * Also make the main section names in the nav bar and h2 headers small-caps.
+ */
+
+nav span.mainsection, h2 {
+    font-variant: small-caps;
+    }
 
 /*
  * Center the page with a width of 800px.

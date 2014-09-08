@@ -26,9 +26,9 @@
 </header>
 <hr /><!-- \\\\\\\\\\\\\\\\\\\\   nav   //////////////////// -->
 <nav>
-    {% block navhome %}<a href="/">Accueil</a>{% endblock %}{% block crumbshome %}{% endblock %} |
-    {% block navblog %}<a href="/blogue/">Blogue</a>{% endblock %}{% block crumbsblog %}{% endblock %} |
-    {% block navpages %}<a href="/pages/">Pages</a>{% endblock %}{% block crumbspages %}{% endblock %}
+    <span class="mainsection">{% block navhome %}<a href="/">Accueil</a>{% endblock %}</span>{% block crumbshome %}{% endblock %} |
+    <span class="mainsection">{% block navblog %}<a href="/blogue/">Blogue</a>{% endblock %}</span>{% block crumbsblog %}{% endblock %} |
+    <span class="mainsection">{% block navpages %}<a href="/pages/">Pages</a>{% endblock %}</span>{% block crumbspages %}{% endblock %}
 </nav>
 <hr /><!-- \\\\\\\\\\\\\\\\\\\\ article //////////////////// -->{% block body %}{% endblock %}<hr /><!-- \\\\\\\\\\\\\\\\\\\\ footer  //////////////////// -->
 <footer>
