@@ -139,6 +139,17 @@ header {
 }
 
 /*
+ * Set footer to a more discrete font color
+ */
+
+footer, footer a:link {
+    color: #888;
+}
+footer a:hover {
+    color: blue;
+}
+
+/*
  * Bullet-less list on blog index.
  */
 
