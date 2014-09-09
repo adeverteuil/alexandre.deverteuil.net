@@ -150,18 +150,22 @@ footer a:hover {
 }
 
 /*
- * Bullet-less list on blog index.
+ * The blog index.
  */
 
-ul.no_bullets > li {
-    list-style-type: none;
+table#blog_index td {
+    vertical-align: top;
+}
+
+table#blog_index td.mdash {
+    padding: 0px .2em;
 }
 
 /*
  * Small and pale green tags on blog index
  */
 
-ul#blog_index span.tag {
+table#blog_index span.tag {
     color: #8a8;
     font-size: .7em;
 }

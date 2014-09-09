@@ -10,13 +10,14 @@
 
 {% block content %}
 <section>{% if latest_post_list %}
-    <ul id="blog_index" class="no_bullets">{% for post in latest_post_list %}
-        <li>
-            <span>{{ post.pub_date|date }}</span> &mdash;
-            <span title="{{ post.summary }}"><a href="{% url 'blog:detail' post.slug %}">{{ post.title }}</a></span>{% for category in post.categories.all %}
+    <table id="blog_index">{% for post in latest_post_list %}
+        <tr>
+            <td>{{ post.pub_date|date }}</td><td class="mdash">&mdash;</td>
+            <td><span title="{{ post.summary }}"><a href="{% url 'blog:detail' post.slug %}">{{ post.title }}</a></span>{% for category in post.categories.all %}
             <span class="tag">#{{ category.name }}</span>{% endfor %}
-        </li>{% endfor %}
-    </ul>{% else %}
+            </td>
+        </tr>{% endfor %}
+    </table>{% else %}
     <p>No posts are available.</p>{% endif %}
 </section>
 {% endblock content %}
