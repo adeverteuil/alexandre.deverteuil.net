@@ -12,3 +12,8 @@
     font-family: inconsolata, monospace;
     font-size: 10pt;
     }
+
+#id_body {
+    width: 100%;
+    height: 400px;
+    }
