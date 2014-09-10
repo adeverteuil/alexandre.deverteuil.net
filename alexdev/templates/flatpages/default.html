@@ -4,6 +4,7 @@
 
 {% block htmltitle %}{{ flatpage.title }}{% endblock %}
 {% block headertitle %}{{ flatpage.title }}{% endblock %}
+{% block headerdate %}{% if flatpage.page.pub_date %}{{ flatpage.page.pub_date|date }}{% endif %}{% endblock %}
 {% block description %}{{ flatpage.page.description }}{% endblock %}
 
 {% block crumbspages %}{% breadcrumbs flatpage.url %}{% endblock %}

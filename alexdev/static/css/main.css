@@ -98,11 +98,38 @@ textarea {
    ========================================================================== */
 
 /*
+ * The website's font.
+ * My site should never render in Arial.
+ */
+
+html {
+    font-family: Corbel, "DejaVu Sans", Verdana, "Liberation Sans", Calibri, Helvetica, monospace;
+    font-size: 20px;
+    }
+
+/*
+ * Reduce h1 margin-bottom and make small-caps.
+ */
+
+h1 {
+    margin: 0.67em 0px 0.2em;
+    font-variant: small-caps;
+}
+
+/*
+ * Also make the main section names in the nav bar and h2 headers small-caps.
+ */
+
+nav span.mainsection, h2 {
+    font-variant: small-caps;
+    }
+
+/*
  * Center the page with a width of 800px.
  */
 
 header, nav, article, footer, body > section, body > hr {
-    width: 800px;
+    width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -112,18 +139,33 @@ header {
 }
 
 /*
- * Bullet-less list on blog index.
+ * Set footer to a more discrete font color
  */
 
-ul.no_bullets > li {
-    list-style-type: none;
+footer, footer a:link {
+    color: #888;
+}
+footer a:hover {
+    color: blue;
+}
+
+/*
+ * The blog index.
+ */
+
+table#blog_index td {
+    vertical-align: top;
+}
+
+table#blog_index td.mdash {
+    padding: 0px .2em;
 }
 
 /*
  * Small and pale green tags on blog index
  */
 
-ul#blog_index span.tag {
+table#blog_index span.tag {
     color: #8a8;
     font-size: .7em;
 }
@@ -164,36 +206,11 @@ img.thumb {
 .figure {
     display: inline-block;
     text-align: center;
+    font-size: .8em;
     border: 1px solid #667f50;
     padding: 8px;
     margin: 4px;
     vertical-align: top;
-}
-
-/*
- * Code listings
- */
-
-pre {
-    background-color:#EEE;
-    padding:2mm;
-    border-top:2px solid #999;
-    border-left:2px solid #999;
-    border-right:1px solid #CCC;
-    border-bottom:1px solid #CCC;
-}
-
-pre .comment {
-    color:#888;
-}
-
-/*
- * Inline code
- */
-
-code {
-    font-size: 12px;
-    color: #000;
 }
 
 /*
@@ -205,6 +222,7 @@ table.inbody {
     border-width: 2px 0px;
     border-style: solid;
     background-color: lightyellow;
+    font-size: .8em;
 }
 
 .inbody td, .inbody th {
@@ -228,8 +246,64 @@ td.ralign, th.ralign {
     text-align: center;
 }
 
+/*
+ * Inline code
+ */
 
+code {
+    font-family: Inconsolata;
+    font-size: 16px;
+}
 
+/*
+ * Code listings
+ */
+
+pre {
+    font-family: Inconsolata, Consolas, monospace;
+    font-size: 16px;
+    line-height: 1em;
+    background-color: #202028;
+    color: #bebebe;
+    padding:2mm;
+    border-top:2px solid #999;
+    border-left:2px solid #999;
+    border-right:1px solid #CCC;
+    border-bottom:1px solid #CCC;
+    }
+
+pre a:link {
+    color: inherit;
+}
+pre a:hover {
+    color: lightblue;
+}
+
+pre span.fg_color0, pre span.fg_black { color: #000000; }
+pre span.fg_color1, pre span.fg_red { color: #d36265; }
+pre span.fg_color2, pre span.fg_green { color: #aece91; }
+pre span.fg_color3, pre span.fg_yellow { color: #e7e18c; }
+pre span.fg_color4, pre span.fg_blue { color: #7a7ab0; }
+pre span.fg_color5, pre span.fg_magenta { color: #963c59; }
+pre span.fg_color6, pre span.fg_cyan { color: #7f9f7f; }
+pre span.fg_color7, pre span.fg_white { color: #bebebe; }
+pre span.fg_color8, pre span.fg_b_black, pre span.comment { color: #666666; font-weight: 700; }
+pre span.fg_color9, pre span.fg_b_red { color: #ef8171; font-weight: 700; }
+pre span.fg_color10, pre span.fg_b_green { color: #e5f779; font-weight: 700; }
+pre span.fg_color11, pre span.fg_b_yellow { color: #f0dfaf; font-weight: 700; }
+pre span.fg_color12, pre span.fg_b_blue { color: #8e9fbc; font-weight: 700; }
+pre span.fg_color13, pre span.fg_b_magenta { color: #ef9ebe; font-weight: 700; }
+pre span.fg_color14, pre span.fg_b_cyan { color: #71bebe; font-weight: 700; }
+pre span.fg_color15, pre span.fg_white { color: #ffffff; font-weight: 700; }
+
+pre span.bg_color0, pre span.bg_black { background-color: #000000; }
+pre span.bg_color1, pre span.bg_red { background-color: #d36265; }
+pre span.bg_color2, pre span.bg_green { background-color: #aece91; }
+pre span.bg_color3, pre span.bg_yellow { background-color: #e7e18c; }
+pre span.bg_color4, pre span.bg_blue { background-color: #7a7ab0; }
+pre span.bg_color5, pre span.bg_magenta { background-color: #963c59; }
+pre span.bg_color6, pre span.bg_cyan { background-color: #7f9f7f; }
+pre span.bg_color7, pre span.bg_white { background-color: #bebebe; }
 
 
 

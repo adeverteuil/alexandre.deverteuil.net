@@ -9,6 +9,7 @@
     <title>{% block htmltitle %}Untitled{% endblock %} &mdash; Alexandre de Verteuil</title>
     <meta name="description" content="{% block description %}{% endblock %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http{% if request.is_secure %}s{% endif %}://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
     <script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -25,13 +26,16 @@
 </header>
 <hr /><!-- \\\\\\\\\\\\\\\\\\\\   nav   //////////////////// -->
 <nav>
-    {% block navhome %}<a href="/">Accueil</a>{% endblock %}{% block crumbshome %}{% endblock %} |
-    {% block navblog %}<a href="/blogue/">Blogue</a>{% endblock %}{% block crumbsblog %}{% endblock %} |
-    {% block navpages %}<a href="/pages/">Pages</a>{% endblock %}{% block crumbspages %}{% endblock %}
+    <span class="mainsection">{% block navhome %}<a href="/">Accueil</a>{% endblock %}</span>{% block crumbshome %}{% endblock %} |
+    <span class="mainsection">{% block navblog %}<a href="/blogue/">Blogue</a>{% endblock %}</span>{% block crumbsblog %}{% endblock %} |
+    <span class="mainsection">{% block navpages %}<a href="/pages/">Pages</a>{% endblock %}</span>{% block crumbspages %}{% endblock %}
 </nav>
 <hr /><!-- \\\\\\\\\\\\\\\\\\\\ article //////////////////// -->{% block body %}{% endblock %}<hr /><!-- \\\\\\\\\\\\\\\\\\\\ footer  //////////////////// -->
 <footer>
-Copyright © 2014, Alexandre de Verteuil
+<p>
+Copyright © 2014 Alexandre de Verteuil<br />
+Contactez-moi à <a href="mailto:alexandre@deverteuil.net">alexandre@deverteuil.net</a>
+</p>
 </footer>{% comment %}
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-PRODUCTION_DIR = "/srv/http/alexandre.deverteuil.net/alexdev"
+PRODUCTION_DIR = "/home/http/alexandre.deverteuil.net/alexdev"
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,6 +31,7 @@ if BASE_DIR == PRODUCTION_DIR:
     ADMINS = (('Alexandre de Verteuil', 'alexandre@deverteuil.net'),)
     MANAGERS = ADMINS
     SERVER_EMAIL = "http@baryon"
+    EMAIL_HOST = "alexdev.chickenkiller.net"
     DATABASES = {
         'default': {
             'ENGINE': "django.db.backends.postgresql_psycopg2",
@@ -70,7 +71,6 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'blog',
     'pages',
-    'south',
     'dry_urls',
 )
 
@@ -135,4 +135,17 @@ SITE_ID = 1
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, "alexdev", "templates"),
+    )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    # Defaults:
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    # Non-default:
+    "django.core.context_processors.request",
     )

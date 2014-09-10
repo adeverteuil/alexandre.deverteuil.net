@@ -6,11 +6,11 @@ from pages.models import Page
 
 class PageAdmin(FlatPageAdmin):
 
-    # Add the description field.
+    # Add the description and pub_date fields.
     FlatPageAdmin.fieldsets[0][1]['fields'] = (
-        'url', 'title', 'description', 'content', 'sites'
+        'url', 'title', 'description', 'content', ('sites', 'pub_date')
         )
-    list_display = ("url", "title", "description")
+    list_display = ("url", "title", "description", "pub_date")
 
     class Media:
         css = {

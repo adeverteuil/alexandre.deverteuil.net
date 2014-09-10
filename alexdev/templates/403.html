@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{# https://duckduckgo.com/search_box #}
+
+{% block htmltitle %}Erreur 403{% endblock %}
+{% block headertitle %}Erreur 403 &mdash; accès refusé{% endblock %}
+{% block body %}
+<section>
+<h2>Français</h2>
+<p>Erreur 403&nbsp;: Accès refusé.
+<blockquote>
+«&nbsp;Le serveur a compris la requête, mais refuse de l'exécuter. [⋯] Cela signifie généralement que l'authentification a été acceptée mais que les droits d'accès ne [vous] permettent pas d'accéder à la ressource.&nbsp;»<br />
+&mdash; Wikipédia. <a href="https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP#Erreur_du_client">Liste des codes HTTP, Erreur du client</a>.
+</blockquote>
+</p>
+
+<h2>English</h2>
+<p>Error 403: Forbidden.
+<blockquote>
+“[This error code] indicate that the server can be reached and understood the request, but refuses to take any further action.”<br />
+&mdash; Wikipedia. <a href="https://en.wikipedia.org/wiki/HTTP_403">HTTP 403</a>.
+</blockquote>
+<blockquote>
+“The request was a valid request, but the server is refusing to respond to it. Unlike a 401 Unauthorized response, authenticating will make no difference.”<br />
+&mdash; Wikipedia. <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error">List of HTTP status codes, 4xx Client Error</a>.
+</blockquote>
+</p>
+</section>
+{% endblock %}

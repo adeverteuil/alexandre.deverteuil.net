@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{# https://duckduckgo.com/search_box #}
+
+{% block htmltitle %}Erreur 500{% endblock %}
+{% block headertitle %}Erreur 500 &mdash; erreur interne du serveur{% endblock %}
+{% block body %}
+<section>
+<h2>Français</h2>
+<p>Erreur 500&nbsp;: erreur interne du serveur</p>
+<p>
+Une erreur est survenue sur le serveur lors du traitement de votre requête. Soyez assuré qu'un rapport automatique m'a été envoyé par courriel. Je vous invite à réessayer plus tard.
+</p>
+<h2>English</h2>
+<p>Error 500: Internal Server Error</p>
+<p>
+The server encountered en error while processing your request. Be assured a report was emailed to me automatically. I invite you to try again later.
+</p>
+</section>
+{% endblock %}
+
