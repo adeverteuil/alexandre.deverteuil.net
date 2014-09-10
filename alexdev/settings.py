@@ -24,6 +24,7 @@ if BASE_DIR == PRODUCTION_DIR:
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = TEMPLATE_DEBUG = False
     ALLOWED_HOSTS = [
+        "baryon.deverteuil.net"
         "alexandre.deverteuil.net",
         "localhost",
         "198.58.102.179",
