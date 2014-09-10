@@ -31,6 +31,7 @@ if BASE_DIR == PRODUCTION_DIR:
     ADMINS = (('Alexandre de Verteuil', 'alexandre@deverteuil.net'),)
     MANAGERS = ADMINS
     SERVER_EMAIL = "http@baryon"
+    EMAIL_HOST = "alexdev.chickenkiller.net"
     DATABASES = {
         'default': {
             'ENGINE': "django.db.backends.postgresql_psycopg2",
