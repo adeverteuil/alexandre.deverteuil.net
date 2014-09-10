@@ -3,7 +3,7 @@
 set -e
 
 REMOTE_HOST=baryon.deverteuil.net
-REMOTE_ROOT=/srv/http/alexandre.deverteuil.net
+REMOTE_ROOT=/home/http/alexandre.deverteuil.net
 LOCAL_ROOT=/home/alex/src
 DJANGO_PROJECT=alexdev
 
@@ -26,8 +26,16 @@ rsync \
     $LOCAL_ROOT/$DJANGO_PROJECT \
     $REMOTE_HOST:$REMOTE_ROOT
 
+echo Updating virtualenv
+ssh $REMOTE_HOST \
+    source $REMOTE_ROOT/virtualenv/bin/activate \;\
+    pip install -r $REMOTE_ROOT/$DJANGO_PROJECT/requirements.txt
+
 echo Migrating database schemas and data.
-ssh $REMOTE_HOST cd $REMOTE_ROOT/$DJANGO_PROJECT \; python manage.py migrate
+ssh $REMOTE_HOST \
+    source $REMOTE_ROOT/virtualenv/bin/activate \;\
+    cd $REMOTE_ROOT/$DJANGO_PROJECT \;\
+    python manage.py migrate
 
 echo Restarting web server.
 ssh root@$REMOTE_HOST systemctl restart httpd
