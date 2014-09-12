@@ -24,7 +24,7 @@ if BASE_DIR == PRODUCTION_DIR:
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = TEMPLATE_DEBUG = False
     ALLOWED_HOSTS = [
-        "baryon.deverteuil.net"
+        "baryon.deverteuil.net",
         "alexandre.deverteuil.net",
         "localhost",
         "198.58.102.179",
@@ -32,7 +32,7 @@ if BASE_DIR == PRODUCTION_DIR:
     ADMINS = (('Alexandre de Verteuil', 'alexandre@deverteuil.net'),)
     MANAGERS = ADMINS
     SERVER_EMAIL = "http@baryon"
-    EMAIL_HOST = "alexdev.chickenkiller.net"
+    EMAIL_HOST = "alexdev.chickenkiller.com"
     DATABASES = {
         'default': {
             'ENGINE': "django.db.backends.postgresql_psycopg2",
@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'blog',
     'pages',
     'dry_urls',
+    'images',
 )
 
 MIDDLEWARE_CLASSES = (
