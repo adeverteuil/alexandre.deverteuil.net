@@ -46,7 +46,7 @@ class Image(models.Model):
         editable=False,
         )
     original = models.ImageField(
-        upload_to=os.path.join(Collection.subdir, "uploads"),
+        upload_to="image_uploads",
         height_field="original_height",
         width_field="original_width",
         )
