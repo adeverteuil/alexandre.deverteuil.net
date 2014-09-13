@@ -15,7 +15,8 @@ class Collection(models.Model):
     slug = models.SlugField()
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    subdir = "images"  # Subdirectory of MEDIA_URL to hold collections under.
+    # Subdirectory of MEDIA_URL to hold collections under.
+    dir = os.path.join(settings.MEDIA_URL, "images")
 
     def __init__(self, *args, **kwargs):
         # Save slug for later comparison in save method.
