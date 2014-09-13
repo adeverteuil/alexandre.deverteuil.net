@@ -36,7 +36,10 @@ class Collection(models.Model):
 class Image(models.Model):
 
     title = models.CharField(max_length=128)
-    basename = models.CharField(max_length=128)
+    basename = models.CharField(
+        max_length=128,
+        help_text="Don't forget the file extension (.jpg, .png, etc.)."
+        )
     original_basename = models.CharField(
         max_length=128,
         blank=True,
@@ -49,7 +52,10 @@ class Image(models.Model):
         )
     original_height = models.IntegerField(blank=True)
     original_width = models.IntegerField(blank=True)
-    collection = models.ForeignKey(Collection)
+    collection = models.ForeignKey(
+        Collection,
+        help_text="Image will be filed in \"MEDIA_URL/collection/basename\"."
+        )
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
