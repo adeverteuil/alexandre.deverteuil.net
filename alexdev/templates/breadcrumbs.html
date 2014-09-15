@@ -1,2 +1,2 @@
 {% for crumb in crumbs %} &gt;
-        {% if crumb.url %}<a href="{{ crumb.url }}">{{ crumb.name }}</a>{% else %}{{ crumb.name }}{% endif %}{% endfor %}
+        {% if crumb.url %}<a href="{{ crumb.url }}">{{ crumb.name|truncatechars_html:40 }}</a>{% else %}{{ crumb.name|truncatechars_html:40 }}{% endif %}{% endfor %}
