@@ -1,11 +1,11 @@
 {% extends "blog/base_blog.html" %}
 {% load dry_urls %}
 
-{% block htmltitle %}{{ post.title }}{% endblock %}
-{% block headertitle %}{{ post.title }}{% endblock %}
+{% block htmltitle %}{{ post.title|removetags:"code kbd" }}{% endblock %}
+{% block headertitle %}{{ post.title|safe }}{% endblock %}
 {% block headerdate %}{{ post.pub_date|date }}{% endblock %}
 {% block description %}{{ post.summary }}{% endblock %}
-{% block crumbsblog %} &gt; {{ post.title|truncatechars:30 }}{% endblock %}
+{% block crumbsblog %} &gt; {{ post.title|removetags:"code kbd"|truncatechars:30 }}{% endblock %}
 
 {% block content %}
 <article>
