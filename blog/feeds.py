@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.syndication.views import Feed
 from django.core.urlresolvers import reverse
 
@@ -12,14 +14,17 @@ class LatestEntriesFeed(Feed):
         )
 
     def items(self):
-        posts = Post.objects.order_by('-pub_date')
-        return [post for post in posts if post.is_published()][:10]
+        now = datetime.datetime.now()
+        return Post.objects.filter(
+            pub_date__lte=now,
+            public=True,
+            ).order_by('-pub_date')[:10]
 
     def item_title(self, item):
         return item.title  # TODO remove tags.
 
     def item_description(self, item):
-        return item.summary  # TODO choose whether to display body instead.
+        return item.body
 
     def item_link(self, item):
         return reverse('blog:detail', kwargs={'slug': item.slug})
