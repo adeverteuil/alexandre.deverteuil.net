@@ -1,3 +1,7 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block body %}{% block content %}{% endblock %}{% endblock body %}
+{% block footer %}{{ block.super }}<br />
+<!-- https://www.mozilla.org/en-US/foundation/feed-icon-guidelines/ -->
+<a href="{% url "blog:rss" %}"><img src="{% static "images/feed-icon-28x28.png"%}" alt="RSS feed" title="RSS feed" /></a>{% endblock %}

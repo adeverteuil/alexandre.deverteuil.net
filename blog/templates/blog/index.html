@@ -2,6 +2,8 @@
 
 {% block htmltitle %}Blogue{% endblock %}
 {% block description %}Le blogue personnel d’Alexandre de Verteuil{% endblock %}
+{% block head %}
+    <link rel="alternate" type="application/rss+xml" href="{% url "blog:rss" %}" title="Le blogue d'Alexandre de Verteuil">{% endblock %}
 {% block headertitle %}Blogue{% endblock %}
 {% if latest_post_list %}
     {% block headerdate %}{{ latest_post_list.0.pub_date|date }}{% endblock %}
