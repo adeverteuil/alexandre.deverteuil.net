@@ -13,7 +13,7 @@
     font-size: 10pt;
     }
 
-#id_body {
+#id_body, #id_content {
     width: 100%;
     height: 400px;
     }
