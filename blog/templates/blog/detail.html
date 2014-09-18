@@ -1,7 +1,9 @@
 {% extends "blog/base_blog.html" %}
 {% load dry_urls %}
 
-{% block htmltitle %}{{ post.title|removetags:"code kbd" }}{% endblock %}
+{# Don't forget to apply the same filters in feed_body.html and feed_title.html #}
+
+{% block htmltitle %}{{ post.title|striptags }}{% endblock %}
 {% block headertitle %}{{ post.title|safe }}{% endblock %}
 {% block headerdate %}{{ post.pub_date|date }}{% endblock %}
 {% block description %}{{ post.summary }}{% endblock %}
