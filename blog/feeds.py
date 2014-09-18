@@ -9,6 +9,8 @@ from blog.models import Post
 class LatestEntriesFeed(Feed):
     title = "Le blogue d’Alexandre de Verteuil"
     link = "/blogue/"
+    title_template = "blog/feed_title.html"
+    description_template = "blog/feed_description.html"
     description = (
         "Billets récents publiés sur le blogue d’Alexandre de Verteuil"
         )
@@ -21,7 +23,7 @@ class LatestEntriesFeed(Feed):
             ).order_by('-pub_date')[:10]
 
     def item_title(self, item):
-        return item.title  # TODO remove tags.
+        return item.title
 
     def item_description(self, item):
         return item.body
