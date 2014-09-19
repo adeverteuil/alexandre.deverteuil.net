@@ -7,29 +7,37 @@
 {% block body %}
 <section>
 <h2>Français</h2>
-<p>Erreur 404&nbsp: page introuvable</p>
+<p>Erreur 404&nbsp;: page introuvable</p>
 <p>
 La page à laquelle vous tentez d’accéder&nbsp;:<br />
 <code>http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ request.path }}</code><br />
-est introuvable. Veuillez vérifier l’orthographe et essayer à nouveau.
-<br />Vous pouvez également consulter la
-<a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/">page d’accueil</a>,
-<a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/blogue/">l’index du blogue</a> ou
-<a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/pages/">l’index des pages</a>.
+est introuvable. Veuillez vérifier l’orthographe et essayez de nouveau.
 </p>
-<iframe src="http{% if request.is_secure %}s{% endif %}://duckduckgo.com/search.html?site=alexandre.deverteuil.net&prefill=Recherchez sur ce site avec DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;" frameborder="0"></iframe>
+<p>
+Suggestions&nbsp;:
+<ul>
+<li>Consultez <a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/">la page d’accueil</a>,
+    <a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/blogue/">l’index du blogue</a> ou
+    <a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/pages/">l’index des pages</a>,</li>
+<li><iframe src="http{% if request.is_secure %}s{% endif %}://duckduckgo.com/search.html?site=alexandre.deverteuil.net&prefill=Recherchez sur ce site avec DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;vertical-align:middle;" frameborder="0"></iframe></li>
+</ul>
+</p>
 
 <h2>English</h2>
 <p>Error 404: Page Not Found</p>
 <p>
 The page you requested:<br />
 <code>http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}{{ request.path }}</code><br />
-is not found. Please check the spelling and try again. <br />
-You may also access
-<a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/">the home page</a>,
-<a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/blogue/">the blog index</a> or
-<a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/pages/">the pages index</a>.
+is not found. Please check the spelling and try again.
 </p>
-<iframe src="http{% if request.is_secure %}s{% endif %}://duckduckgo.com/search.html?site=alexandre.deverteuil.net&prefill=Search this site with DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;" frameborder="0"></iframe>
+<p>
+Suggestions:
+<ul>
+<li>Access <a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/">the home page</a>,
+    <a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/blogue/">the blog index</a> or
+    <a href="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/pages/">the pages index</a>,
+<li><iframe src="http{% if request.is_secure %}s{% endif %}://duckduckgo.com/search.html?site=alexandre.deverteuil.net&prefill=Search this site with DuckDuckGo" style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;vertical-align:middle;" frameborder="0"></iframe></li>
+</ul>
+</p>
 </section>
 {% endblock %}
