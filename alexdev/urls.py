@@ -30,6 +30,7 @@ if settings.DEBUG:
         )
 
 
-urlpatterns += patterns('',
-    url(r'', include('django.contrib.flatpages.urls')),
+urlpatterns += patterns("django.contrib.flatpages.views",
+    # Match nothing (the homepage) or a path ending in /.
+    url(r"^(?P<url>.*/|)$", "flatpage"),
     )
