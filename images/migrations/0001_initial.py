@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
                 ('title', models.CharField(max_length=128)),
                 ('slug', models.SlugField()),
-                ('original', models.ImageField(upload_to=images.models.get_image_path)),
+                ('original', models.ImageField(upload_to="images.models.get_image_path")),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
                 ('collection', models.ForeignKey(to='images.Collection')),

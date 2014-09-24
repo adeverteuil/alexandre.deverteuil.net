@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='image',
             name='original',
-            field=models.ImageField(upload_to=images.models.get_image_path, width_field='original_width', height_field='original_height'),
+            field=models.ImageField(upload_to="images.models.get_image_path", width_field='original_width', height_field='original_height'),
         ),
     ]

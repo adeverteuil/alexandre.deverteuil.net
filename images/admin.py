@@ -1,23 +1,16 @@
 from django.contrib import admin
 
-from images.models import Image, Collection
+from images.models import Image
 
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
 
     fields = (
-        "title",
-        "basename",
         "original",
-        "collection",
         )
     list_display = (
-        "title",
-        "collection",
-        "basename",
+        "original",
         "original_width",
         "original_height",
         )
-
-admin.site.register(Collection)
