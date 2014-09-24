@@ -3,10 +3,6 @@ from django.core.files.move import file_move_safe
 from django.conf import settings
 
 
-# Removing this obsolete name breaks migration number 0001.
-def get_image_path(): pass
-
-
 class Image(models.Model):
 
     original = models.ImageField(
