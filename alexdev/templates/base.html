@@ -12,7 +12,7 @@
     <link href='http{% if request.is_secure %}s{% endif %}://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
-    <script src="/static/js/vendor/modernizr-2.6.2.min.js"></script>{% block head %}{% endblock %}
+    <script src="{{ STATIC_URL }}js/vendor/modernizr-2.6.2.min.js"></script>{% block head %}{% endblock %}
 </head>
 <body>
 <!--[if lt IE 7]>
