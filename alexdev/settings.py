@@ -41,6 +41,11 @@ if BASE_DIR == PRODUCTION_DIR:
             'PASSWORD': "87a6sdf6g5xcvb67786",
         }
     }
+    # Media files
+    # https://docs.djangoproject.com/en/1.6/topics/files/
+    # https://docs.djangoproject.com/en/1.6/howto/static-files/#serving-uploaded-files-in-development
+    MEDIA_ROOT = os.path.normpath(os.path.join(PRODUCTION_DIR, "../media"))
+    MEDIA_URL = "/media/"
 else:
     # Options for the development server.
     DEBUG = True
@@ -56,6 +61,8 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media_root")
+    MEDIA_URL = "/media/"
 
 
 # Application definition
@@ -117,14 +124,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "alexdev/static"),
     )
-
-
-# Media files
-# https://docs.djangoproject.com/en/1.6/topics/files/
-# https://docs.djangoproject.com/en/1.6/howto/static-files/#serving-uploaded-files-in-development
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "media_root")
-MEDIA_URL = "/media/"
 
 
 # Sites framework
