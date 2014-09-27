@@ -11,6 +11,7 @@ class PageAdmin(FlatPageAdmin):
         'url', 'title', 'description', 'content', ('sites', 'pub_date')
         )
     list_display = ("url", "title", "description", "pub_date")
+    save_on_top = True
 
     class Media:
         css = {

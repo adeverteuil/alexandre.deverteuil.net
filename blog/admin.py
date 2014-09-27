@@ -26,6 +26,7 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     actions = [make_public, make_not_public]
     date_hierarchy = "pub_date"
+    save_on_top = True
 
     # Represent dates in yyyy-mm-dd hh:mm format on the admin list display.
     # source:  https://docs.djangoproject.com/en/1.6/topics/i18n/
