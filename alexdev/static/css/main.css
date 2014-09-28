@@ -176,14 +176,12 @@ table#blog_index span.tag {
 
 .rfloat {
     margin-left: 15px;
-    margin-top: 15px;
     margin-bottom: 15px;
     float: right;
 }
 
 .lfloat {
     margin-right: 15px;
-    margin-top: 15px;
     margin-bottom: 15px;
     float: left;
 }
