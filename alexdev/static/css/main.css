@@ -272,6 +272,8 @@ pre {
     border-left:2px solid #999;
     border-right:1px solid #CCC;
     border-bottom:1px solid #CCC;
+    overflow-x: scroll;
+    white-space: pre;
     }
 
 pre a:link {
