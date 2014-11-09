@@ -253,6 +253,7 @@ code, kbd {
     font-size: .9em;
     padding: 0px .2em;
     font-variant: normal;  /* removes small-caps in h1 tags */
+    white-space: nowrap;
 }
 code { background-color: #d8e8d8; }
 kbd { background-color: #d8d8d8; }
