@@ -81,6 +81,7 @@ INSTALLED_APPS = (
     'pages',
     'dry_urls',
     'images',
+    'theme',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,22 +122,12 @@ TIME_FORMAT = "H:i"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "alexdev/static"),
-    )
 
 
 # Sites framework
 
 SITE_ID = 1
 
-
-# Template directories
-# https://docs.djangoproject.com/en/1.6/ref/templates/api/#the-template-dirs-setting
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, "alexdev", "templates"),
-    )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     # Defaults:
