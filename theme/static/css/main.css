@@ -186,6 +186,10 @@ table#blog_index span.tag {
     float: left;
 }
 
+hr {
+    clear: both;
+}
+
 /*
  * Image thumbnails
  */
