@@ -17,9 +17,6 @@ PRODUCTION_DIR = "/home/http/alexandre.deverteuil.net/alexdev"
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'c8$2^a5+(-p^p&=v(sm0n9kl6-w9achks%ine^1jy1za))dn+c'
-
 if BASE_DIR == PRODUCTION_DIR:
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = TEMPLATE_DEBUG = False
@@ -33,6 +30,8 @@ if BASE_DIR == PRODUCTION_DIR:
     MANAGERS = ADMINS
     SERVER_EMAIL = "http@baryon"
     EMAIL_HOST = "alexdev.chickenkiller.com"
+    with open("/home/http/alexandre.deverteuil.net/secret_key.txt") as f:
+        SECRET_KEY = f.read().strip()
     DATABASES = {
         'default': {
             'ENGINE': "django.db.backends.postgresql_psycopg2",
@@ -51,6 +50,9 @@ else:
     DEBUG = True
     TEMPLATE_DEBUG = True
     ALLOWED_HOSTS = []
+
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = 'c8$2^a5+(-p^p&=v(sm0n9kl6-w9achks%ine^1jy1za))dn+c'
 
     # Database
     # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

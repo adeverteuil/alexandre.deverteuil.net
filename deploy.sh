@@ -23,6 +23,7 @@ rsync \
     --exclude="*.sqlite3" \
     --exclude="media_root" \
     --exclude="__pycache__" \
+    --exclude="secret_key.txt" \
     $LOCAL_ROOT/$DJANGO_PROJECT \
     $REMOTE_HOST:$REMOTE_ROOT
 
