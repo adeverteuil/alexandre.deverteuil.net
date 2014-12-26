@@ -245,6 +245,14 @@ td.ralign, th.ralign {
 }
 
 /*
+ * Prevents line wrapping.
+ */
+
+.nowrap {
+    white-space: nowrap;
+}
+
+/*
  * Inline code
  */
 

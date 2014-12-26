@@ -14,7 +14,7 @@
 <section>{% if latest_post_list %}
     <table id="blog_index">{% for post in latest_post_list %}
         <tr>
-            <td>{{ post.pub_date|date }}</td><td class="mdash">&mdash;</td>
+            <td class="nowrap">{{ post.pub_date|date }}</td><td class="mdash">&mdash;</td>
             <td><span title="{{ post.summary }}"><a href="{% url 'blog:detail' post.slug %}">{{ post.title|safe }}</a></span>{% for category in post.categories.all %}
             <span class="tag">#{{ category.name }}</span>{% endfor %}
             </td>
