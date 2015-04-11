@@ -300,7 +300,7 @@ pre span.fg_color0,  pre span.fg_black                          { color: #000000
 pre span.fg_color1,  pre span.fg_red                            { color: #d36265; }
 pre span.fg_color2,  pre span.fg_green,      pre span.PS1       { color: #aece91; }
 pre span.fg_color3,  pre span.fg_yellow                         { color: #e7e18c; }
-pre span.fg_color4,  pre span.fg_blue                           { color: #7a7ab0; }
+pre span.fg_color4,  pre span.fg_blue,       pre span.literal   { color: #7a7ab0; }
 pre span.fg_color5,  pre span.fg_magenta                        { color: #963c59; }
 pre span.fg_color6,  pre span.fg_cyan                           { color: #7f9f7f; }
 pre span.fg_color7,  pre span.fg_white                          { color: #bebebe; }
