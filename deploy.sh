@@ -38,5 +38,5 @@ ssh $REMOTE_HOST \
     cd $REMOTE_ROOT/$DJANGO_PROJECT \;\
     python manage.py migrate
 
-echo Restarting web server.
-ssh root@$REMOTE_HOST systemctl restart httpd
+echo Notify WSGI to pick up changes.
+ssh root@$REMOTE_HOST touch $REMOTE_ROOT/$DJANGO_PROJECT/alexdev/wsgi.py
