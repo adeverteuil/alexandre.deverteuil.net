@@ -13,6 +13,23 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PRODUCTION_DIR = "/home/http/alexandre.deverteuil.net/alexdev"
 
+def read_pgpass(dbname):
+    # https://gist.github.com/barseghyanartur/a6946cfad9bc03c67de3
+    with open(os.path.join(BASE_DIR, "../pgpass")) as f:
+        pgpass_lines = f.readlines()
+        for match in (dbname, "*"):
+            for line in pgpass_lines:
+                if line.startswith("#"):
+                    continue
+                words = line.strip().split(":")
+                if words[2] == match:
+                    return {
+                        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                        'NAME': dbname,
+                        'USER': words[3],
+                        'PASSWORD': words[4],
+                        'HOST': words[0],
+                        }
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -33,12 +50,7 @@ if BASE_DIR == PRODUCTION_DIR:
     with open("/home/http/alexandre.deverteuil.net/secret_key.txt") as f:
         SECRET_KEY = f.read().strip()
     DATABASES = {
-        'default': {
-            'ENGINE': "django.db.backends.postgresql_psycopg2",
-            'NAME': "alexdev",
-            'USER': "alexandre.deverteuil.net",
-            'PASSWORD': "87a6sdf6g5xcvb67786",
-        }
+        'default': read_pgpass("alexdev"),
     }
     # Media files
     # https://docs.djangoproject.com/en/1.6/topics/files/
