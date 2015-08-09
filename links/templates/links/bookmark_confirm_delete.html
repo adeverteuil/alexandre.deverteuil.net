@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block htmltitle %}Supprimer un lien{% endblock %}
+{% block headertitle %}Supprimer un lien{% endblock %}
+
+{% block body %}
+<section>
+<form action="." method="post">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Oui" />
+</form>
+</section>
+{% endblock %}

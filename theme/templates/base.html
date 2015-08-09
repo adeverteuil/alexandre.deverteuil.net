@@ -4,16 +4,17 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block htmltitle %}Untitled{% endblock %} &mdash; Alexandre de Verteuil</title>
-    <meta name="description" content="{% block description %}{% endblock %}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http{% if request.is_secure %}s{% endif %}://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
-    <script src="{{ STATIC_URL }}js/vendor/modernizr-2.6.2.min.js"></script>{% block head %}{% endblock %}
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{% block htmltitle %}Untitled{% endblock %} &mdash; Alexandre de Verteuil</title>
+<meta name="description" content="{% block description %}{% endblock %}" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href='http{% if request.is_secure %}s{% endif %}://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">{% block extrastyles %}{% endblock %}
+<script src="{{ STATIC_URL }}js/vendor/modernizr-2.6.2.min.js"></script>{% block head %}{% endblock %}
 </head>
+
 <body>
 <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser.
@@ -28,7 +29,8 @@
 <nav>
     <span class="mainsection">{% block navhome %}<a href="/">Accueil</a>{% endblock %}</span>{% block crumbshome %}{% endblock %} |
     <span class="mainsection">{% block navblog %}<a href="/blogue/">Blogue</a>{% endblock %}</span>{% block crumbsblog %}{% endblock %} |
-    <span class="mainsection">{% block navpages %}<a href="/pages/">Pages</a>{% endblock %}</span>{% block crumbspages %}{% endblock %}
+    <span class="mainsection">{% block navpages %}<a href="/pages/">Pages</a>{% endblock %}</span>{% block crumbspages %}{% endblock %} |
+    <span class="mainsection">{% block navlinks %}<a href="{% url "links:bookmark_list" %}">Liens</a>{% endblock %}</span>{% block crumbslinks %}{% endblock %}
 </nav>
 <hr /><!-- \\\\\\\\\\\\\\\\\\\\ article //////////////////// -->{% block body %}{% endblock %}<hr /><!-- \\\\\\\\\\\\\\\\\\\\ footer  //////////////////// -->
 <footer>
@@ -36,11 +38,9 @@
 Copyright © 2014 Alexandre de Verteuil<br />
 Contactez-moi à <a href="mailto:alexandre@deverteuil.net">alexandre@deverteuil.net</a>{% block footer %}{% endblock %}
 </p>
-</footer>{% comment %}
+</footer>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
-{% endcomment %}
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>{% block extrascripts %}{% endblock %}
+<script>/* <![cdata[ */{% block script %}{% endblock %}/* ]]> */</script>
 </body>
 </html>

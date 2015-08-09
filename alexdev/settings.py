@@ -84,6 +84,8 @@ INSTALLED_APPS = (
     'dry_urls',
     'images',
     'theme',
+    'links',
+    'taggit',
 )
 
 MIDDLEWARE_CLASSES = (

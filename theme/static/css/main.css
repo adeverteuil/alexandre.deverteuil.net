@@ -165,7 +165,7 @@ table#blog_index td.mdash {
  * Small and pale green tags on blog index
  */
 
-table#blog_index span.tag {
+span.tag {
     color: #8a8;
     font-size: .7em;
 }
