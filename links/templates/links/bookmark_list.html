@@ -7,20 +7,22 @@
 
 {% block body %}
 <section>{% if user.is_authenticated %}
-    <a href="{% url "links:bookmark_add" %}">Add a bookmark</a>{% endif %}{% if object_list %}
-{% include "links/snip_paginator.html" %}{% for link in object_list %}{% if not link.private or user.is_authenticated %}
-    <div>
-            <div class="rfloat">{{ link.datetime_added|date:"Y-m-d" }}{% if user.is_authenticated %}<br />
-            <a href="{% url "links:bookmark_update" pk=link.pk %}">edit</a><br />
-            <a href="{% url "links:bookmark_delete" pk=link.pk %}">delete</a><br />{% if link.private %}
-            private{% endif %}{% endif %}</div>
-            <h2><a href="{{ link.url }}">{{ link.title }}</a></h2>
-            <p>{{ link.description }}</p>
-            <p>{% if link.tags.count %}{% for tag in link.tags.all %}<span class="tag">#{{ tag }}</span> {% endfor %}<br />
-            {% endif %}<code>{{ link.url }}</code></p>
-    </div>{% endif %}{% endfor %}
-{% include "links/snip_paginator.html" %}
-    {% else %}
-    <p>No links are available.</p>{% endif %}
+<p><a href="{% url "links:bookmark_add" %}">Add a bookmark</a>{% endif %}</p>{% if bookmarks %}
+{% block datenav %}{% endblock %}
+{% include "links/_paginator.html" %}{% for bookmark in bookmarks %}{% if not bookmark.private or user.is_authenticated %}
+<div class="bookmark">
+    <div class="rfloat">{{ bookmark.datetime_added|date:"Y-m-d" }}{% if user.is_authenticated %}<br />
+    <a href="{% url "links:bookmark_update" pk=bookmark.pk %}">edit</a><br />
+    <a href="{% url "links:bookmark_delete" pk=bookmark.pk %}">delete</a><br />{% if bookmark.private %}
+    private{% endif %}{% endif %}</div>{% if bookmark.url %}
+    <p><a href="{{ bookmark.url }}">{{ bookmark.title }}</a>{% else %}
+    <p>{{ bookmark.title }}{% endif %}{% if bookmark.tags.count %}<br />
+    {% for tag in bookmark.tags.all %}<span class="tag">#{{ tag }}</span> {% endfor %}{% endif %}{% if bookmark.description %}<br />
+    {{ bookmark.description }}{% endif %}{% if bookmark.url %}<br />
+    <code>{{ bookmark.url }}</code>{% endif %}</p>
+</div>{% endif %}{% endfor %}
+{% include "links/_paginator.html" %}
+{% else %}
+<p>No links are available.</p>{% endif %}
 </section>
 {% endblock body %}

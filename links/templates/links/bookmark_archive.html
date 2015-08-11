@@ -1,0 +1,7 @@
+{% extends "links/bookmark_list.html" %}
+
+{% block navlinks %}{{ block.super|striptags }}{% endblock %}
+
+{% block crumbslinks %} &gt; {% for year in date_list %}
+<a href="{% url "links:bookmark_archive" year=year|date:"Y" %}">{{ year|date:"Y" }}</a>{% endfor %}
+</p>{% endblock %}

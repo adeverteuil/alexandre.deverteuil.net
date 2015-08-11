@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic.dates import ArchiveIndexView, YearArchiveView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from links.models import Bookmark
@@ -12,6 +13,23 @@ class BookmarkList(ListView):
 
     model = Bookmark
     paginate_by = 10
+
+
+class BookmarkArchiveIndex(ArchiveIndexView):
+
+    model = Bookmark
+    context_object_name = "bookmarks"
+    date_field = "datetime_added"
+    paginate_by = 10
+
+
+class BookmarkYearArchive(YearArchiveView):
+
+    model = Bookmark
+    context_object_name = "bookmarks"
+    date_field = "datetime_added"
+    paginate_by = 10
+    make_object_list = True
 
 
 class LoginRequiredMixin:
