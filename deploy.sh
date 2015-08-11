@@ -39,4 +39,4 @@ ssh $REMOTE_HOST \
     python manage.py migrate
 
 echo Notify WSGI to pick up changes.
-ssh root@$REMOTE_HOST touch $REMOTE_ROOT/$DJANGO_PROJECT/alexdev/wsgi.py
+ssh $REMOTE_HOST touch $REMOTE_ROOT/$DJANGO_PROJECT/alexdev/wsgi.py
