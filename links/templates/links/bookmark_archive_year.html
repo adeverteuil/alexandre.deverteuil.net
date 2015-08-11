@@ -1,3 +1,5 @@
 {% extends "links/bookmark_list.html" %}
+{% load links_extras %}
 
+{% block navlinks %}<a href="{% url "links:bookmark_archive" %}{% tags_query_transform %}">{{ block.super|striptags }}</a>{% endblock %}
 {% block crumbslinks %} &gt; {{ year|date:"Y" }}{% endblock %}

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static %}{% load links_extras %}
 
 {% block htmltitle %}Liens{% endblock %}
 {% block description %}Le partage de liens d’Alexandre de Verteuil{% endblock %}
@@ -7,8 +7,10 @@
 
 {% block body %}
 <section>{% if user.is_authenticated %}
-<p><a href="{% url "links:bookmark_add" %}">Add a bookmark</a>{% endif %}</p>{% if bookmarks %}
-{% block datenav %}{% endblock %}
+<p><a href="{% url "links:bookmark_add" %}">Add a bookmark</a>{% endif %}</p>
+{% if querytags %}<p>Filtre&nbsp;:{% for tag in querytags %}
+    <span class="tag">#{{ tag }}<a href="./{% tags_query_transform remove=tag.slug %}"><sup>x</sup></a></span>{% endfor %}
+</p>{% endif %}{% if bookmarks %}
 {% include "links/_paginator.html" %}{% for bookmark in bookmarks %}{% if not bookmark.private or user.is_authenticated %}
 <div class="bookmark">
     <div class="rfloat">{{ bookmark.datetime_added|date:"Y-m-d" }}{% if user.is_authenticated %}<br />
@@ -17,7 +19,7 @@
     private{% endif %}{% endif %}</div>{% if bookmark.url %}
     <p><a href="{{ bookmark.url }}">{{ bookmark.title }}</a>{% else %}
     <p>{{ bookmark.title }}{% endif %}{% if bookmark.tags.count %}<br />
-    {% for tag in bookmark.tags.all %}<span class="tag">#{{ tag }}</span> {% endfor %}{% endif %}{% if bookmark.description %}<br />
+    {% for tag in bookmark.tags.all %}<span class="tag"><a href="./{% tags_query_transform add=tag.slug %}">#{{ tag }}</a></span> {% endfor %}{% endif %}{% if bookmark.description %}<br />
     {{ bookmark.description }}{% endif %}{% if bookmark.url %}<br />
     <code>{{ bookmark.url }}</code>{% endif %}</p>
 </div>{% endif %}{% endfor %}

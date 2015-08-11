@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.dates import ArchiveIndexView, YearArchiveView
@@ -9,26 +10,39 @@ from links.models import Bookmark
 from taggit.models import Tag
 
 
-class BookmarkList(ListView):
-
-    model = Bookmark
-    paginate_by = 10
-
-
-class BookmarkArchiveIndex(ArchiveIndexView):
+class BookmarkArchiveMixin:
 
     model = Bookmark
     context_object_name = "bookmarks"
     date_field = "datetime_added"
     paginate_by = 10
+    allow_empty = True
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        tags = self.request.GET.getlist('tag')
+        for tag in tags:
+            queryset = queryset.filter(tags__slug__in=[tag])
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        tagslugs = self.request.GET.getlist('tag')
+        if tagslugs:
+            q = Q()
+            for slug in tagslugs:
+                q |= Q(slug=slug)
+            context['querytags'] = Tag.objects.filter(q)
+        return context
 
 
-class BookmarkYearArchive(YearArchiveView):
+class BookmarkArchiveIndex(BookmarkArchiveMixin, ArchiveIndexView):
 
-    model = Bookmark
-    context_object_name = "bookmarks"
-    date_field = "datetime_added"
-    paginate_by = 10
+    pass
+
+
+class BookmarkYearArchive(BookmarkArchiveMixin, YearArchiveView):
+
     make_object_list = True
 
 
