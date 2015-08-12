@@ -169,6 +169,16 @@ span.tag {
     color: #8a8;
     font-size: .7em;
 }
+span.tag a {
+    color: inherit;
+    text-decoration: inherit;
+}
+span.tag .delete {
+    color: red;
+}
+span.tag::before {
+    content: "#";
+}
 
 /*
  * Positioning for image divs.

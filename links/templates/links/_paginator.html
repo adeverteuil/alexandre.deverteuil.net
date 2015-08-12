@@ -1,5 +1,7 @@
-{% if is_paginated %}<p>{% if page_obj.has_previous %}
-<a href="{% url "links:bookmark_archive" page=page_obj.previous_page_number year=year|date:"Y" %}">&larr; newer</a>{% else %}
-&larr; newer{% endif %} |{% if page_obj.has_next %}
-<a href="{% url "links:bookmark_archive" page=page_obj.next_page_number year=year|date:"Y" %}">older &rarr;</a>{% else %}
+{% load links_extras %}{% if is_paginated %}<p>{% if page_obj.has_previous %}
+<a href="{% url "links:bookmark_archive" page=page_obj.previous_page_number year=year|date:"Y" %}{% tags_query_transform %}">&larr; newer</a>{% else %}
+&larr; newer{% endif %} |{% if show_first %}
+{% include "links/_paginator_pagenum.html" with pagenum=1 %} … {% endif %}{% for pagenum in page_range %}
+{% include "links/_paginator_pagenum.html" %}{% if not forloop.last and not showlast %} |{% endif %}{% endfor %}{% if show_last %}
+… {% include "links/_paginator_pagenum.html" with pagenum=paginator.num_pages %}{% endif %}{% if page_obj.has_next %}| <a href="{% url "links:bookmark_archive" page=page_obj.next_page_number year=year|date:"Y" %}{% tags_query_transform %}">older &rarr;</a>{% else %}
 older &rarr;{% endif %}{% endif %}
