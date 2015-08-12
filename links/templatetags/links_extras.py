@@ -3,19 +3,21 @@ from django import template
 register = template.Library()
 
 @register.simple_tag(takes_context=True)
-def tags_query_transform(context, **kwargs):
-    updated = context['request'].GET.copy()
-    for k, v in kwargs.items():
-        if k == 'add':
-            tags = updated.getlist('tag')
-            if v not in tags:
-                updated.appendlist('tag', v)
-        if k == 'remove':
-            tags = updated.pop('tag')
-            if v in tags:
-                tags.remove(v)
-            updated.setlist('tag', tags)
-    if updated.getlist('tag'):
-        return "?" + updated.urlencode()
-    else:
-        return ""
+def query_transform(context, *args):
+    query = context['request'].GET.copy()
+    for arg in args:
+        k, v = arg.split("=")
+        if k.startswith("+"):
+            k = k.strip("+")
+            l = query.getlist(k)
+            if v not in l:
+                query.appendlist(k, v)
+        elif k.startswith("-"):
+            k = k.strip("-")
+            l = query.pop(k)
+            if v in l:
+                l.remove(v)
+            query.setlist(k, l)
+        else:
+            query.set(k, v)
+    return "?" + query.urlencode() if query else ""

@@ -9,7 +9,7 @@
 <section>{% if user.is_authenticated %}
 <p><a href="{% url "links:bookmark_add" %}">Add a bookmark</a>{% endif %}</p>
 {% if querytags %}<p>Filtre&nbsp;:{% for tag in querytags %}
-    <span class="tag">{{ tag }}<a href="./{% tags_query_transform remove=tag.slug %}"><sup class="delete">x</sup></a></span>{% endfor %}
+    <span class="tag">{{ tag }}<a href="{% url "links:bookmark_archive" year=year|date:"Y" %}{% query_transform "-tag="|add:tag.slug %}"><sup class="delete">x</sup></a></span>{% endfor %}
 </p>{% endif %}{% if bookmarks %}
 {% paginator 5 %}{% for bookmark in bookmarks %}{% if not bookmark.private or user.is_authenticated %}
 <div class="bookmark">
@@ -19,7 +19,7 @@
     private{% endif %}{% endif %}</div>{% if bookmark.url %}
     <p><a href="{{ bookmark.url }}">{{ bookmark.title }}</a>{% else %}
     <p>{{ bookmark.title }}{% endif %}{% if bookmark.tags.count %}<br />
-    {% for tag in bookmark.tags.all %}<span class="tag"><a href="./{% tags_query_transform add=tag.slug %}">{{ tag }}</a></span> {% endfor %}{% endif %}{% if bookmark.description %}<br />
+    {% for tag in bookmark.tags.all %}<span class="tag"><a href="{% url "links:bookmark_archive" year=year|date:"Y" %}{% query_transform "+tag="|add:tag.slug %}">{{ tag }}</a></span> {% endfor %}{% endif %}{% if bookmark.description %}<br />
     {{ bookmark.description }}{% endif %}{% if bookmark.url %}<br />
     <code>{{ bookmark.url }}</code>{% endif %}</p>
 </div>{% endif %}{% endfor %}

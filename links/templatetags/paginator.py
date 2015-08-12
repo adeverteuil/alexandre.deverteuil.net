@@ -21,14 +21,9 @@ def paginator(context, adjacent_pages=5):
     end = min(page_num + adjacent_pages + extra_right, num_pages)
     page_range = list(range(start, end+1))
 
-    return {
-        'is_paginated': context['is_paginated'],
-        'page_range': page_range,
-        'page_obj': context['page_obj'],
-        'paginator': context['paginator'],
-        'show_first': 1 not in page_range,
-        'show_last': num_pages not in page_range,
-        'request': context['request'],
-    }
+    context['page_range'] = page_range
+    context['show_first'] = 1 not in page_range
+    context['show_last'] = num_pages not in page_range
+    return context
 
 register.inclusion_tag('links/_paginator.html', takes_context=True)(paginator)
