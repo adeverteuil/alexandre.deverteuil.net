@@ -27,6 +27,8 @@ class BookmarkArchiveMixin:
         if textfilter is not None:
             q = Q()
             for term in textfilter.split(" "):
+                if term == "":
+                    continue
                 qq = Q(title__icontains=term)
                 qq |= Q(description__icontains=term)
                 qq |= Q(tags__name__in=[term])
