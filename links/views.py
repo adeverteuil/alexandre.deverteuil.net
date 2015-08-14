@@ -21,8 +21,17 @@ class BookmarkArchiveMixin:
     def get_queryset(self):
         queryset = super().get_queryset()
         tags = self.request.GET.getlist('tag')
+        textfilter = self.request.GET.get('contains', None)
         for tag in tags:
             queryset = queryset.filter(tags__slug__in=[tag])
+        if textfilter is not None:
+            q = Q()
+            for term in textfilter.split(" "):
+                qq = Q(title__icontains=term)
+                qq |= Q(description__icontains=term)
+                qq |= Q(tags__name__in=[term])
+                q &= qq
+            queryset = queryset.filter(q).distinct()
         return queryset
 
     def get_context_data(self, **kwargs):

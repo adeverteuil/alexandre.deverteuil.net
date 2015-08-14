@@ -8,10 +8,16 @@
 {% block body %}
 <section>{% if user.is_authenticated %}
 <p><a href="{% url "links:bookmark_add" %}">Add a bookmark</a>{% endif %}</p>
-{% if querytags %}<p>Filtre&nbsp;:{% for tag in querytags %}
+<p>
+    <form name="filter" action="{% url "links:bookmark_archive" year=year|date:"Y" %}" method="get" class="rfloat">{% for tag in querytags %}
+        <input type="hidden" name="tag" value="{{ tag.slug }}" />{% endfor %}
+        <input type="text" name="contains" value="{{ request.GET.contains }}" />
+        <input type="submit" value="filtrer" />
+    </form>
+    Filtre&nbsp;:{% for tag in querytags %}
     <span class="tag">{{ tag }}<a href="{% url "links:bookmark_archive" year=year|date:"Y" %}{% query_transform "-tag="|add:tag.slug %}"><sup class="delete">x</sup></a></span>{% endfor %}
-</p>{% endif %}{% if bookmarks %}
-{% paginator 5 %}{% for bookmark in bookmarks %}{% if not bookmark.private or user.is_authenticated %}
+</p>{% if bookmarks %}
+{% paginator %}{% for bookmark in bookmarks %}{% if not bookmark.private or user.is_authenticated %}
 <div class="bookmark">
     <div class="rfloat">{{ bookmark.datetime_added|date:"Y-m-d" }}{% if user.is_authenticated %}<br />
     <a href="{% url "links:bookmark_update" pk=bookmark.pk %}">edit</a><br />
@@ -23,8 +29,16 @@
     {{ bookmark.description }}{% endif %}{% if bookmark.url %}<br />
     <code>{{ bookmark.url }}</code>{% endif %}</p>
 </div>{% endif %}{% endfor %}
-{% paginator 5 %}
-{% else %}
+{% paginator %}{% else %}
 <p>No links are available.</p>{% endif %}
 </section>
 {% endblock body %}
+
+{% block script %}
+document.forms["filter"].addEventListener('submit', function(){
+    var el = this.querySelector('input[name="contains"]');
+    if(!el.value){
+        el.removeAttribute('name');
+    }
+});
+{% endblock %}
