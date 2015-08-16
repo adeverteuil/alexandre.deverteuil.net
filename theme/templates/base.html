@@ -27,9 +27,9 @@
 </header>
 <hr /><!-- \\\\\\\\\\\\\\\\\\\\   nav   //////////////////// -->
 <nav>
-    <span class="mainsection">{% block navhome %}<a href="/">Accueil</a>{% endblock %}</span>{% block crumbshome %}{% endblock %} |
-    <span class="mainsection">{% block navblog %}<a href="/blogue/">Blogue</a>{% endblock %}</span>{% block crumbsblog %}{% endblock %} |
-    <span class="mainsection">{% block navlinks %}<a href="{% url "links:bookmark_archive" %}">MicroBlogue</a>{% endblock %}</span>{% block crumbslinks %}{% endblock %} |
+    <span class="mainsection">{% block navhome %}<a href="/">Accueil</a>{% endblock %}</span>{% block crumbshome %}{% endblock %} <span class="sep">|</span>
+    <span class="mainsection">{% block navblog %}<a href="/blogue/">Blogue</a>{% endblock %}</span>{% block crumbsblog %}{% endblock %} <span class="sep">|</span>
+    <span class="mainsection">{% block navlinks %}<a href="{% url "links:bookmark_archive" %}">MicroBlogue</a>{% endblock %}</span>{% block crumbslinks %}{% endblock %} <span class="sep">|</span>
     <span class="mainsection">{% block navpages %}<a href="/pages/">Pages</a>{% endblock %}</span>{% block crumbspages %}{% endblock %}
 </nav>
 <hr /><!-- \\\\\\\\\\\\\\\\\\\\ article //////////////////// -->{% block body %}{% endblock %}<hr /><!-- \\\\\\\\\\\\\\\\\\\\ footer  //////////////////// -->

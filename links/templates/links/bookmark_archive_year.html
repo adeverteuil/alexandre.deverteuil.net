@@ -2,4 +2,4 @@
 {% load links_extras %}
 
 {% block navlinks %}<a href="{% url "links:bookmark_archive" %}{% query_transform %}">{{ block.super|striptags }}</a>{% endblock %}
-{% block crumbslinks %} &gt; {{ year|date:"Y" }}{% endblock %}
+{% block crumbslinks %} <span class="sep">&gt;</span> {{ year|date:"Y" }}{% endblock %}

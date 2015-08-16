@@ -123,6 +123,9 @@ h1 {
 nav span.mainsection, h2 {
     font-variant: small-caps;
     }
+nav span.sep {
+    color: #ccc;
+    }
 
 /*
  * Center the page with a width of 800px.
