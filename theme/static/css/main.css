@@ -123,6 +123,9 @@ h1 {
 nav span.mainsection, h2 {
     font-variant: small-caps;
     }
+nav span.sep {
+    color: #ccc;
+    }
 
 /*
  * Center the page with a width of 800px.
@@ -165,9 +168,19 @@ table#blog_index td.mdash {
  * Small and pale green tags on blog index
  */
 
-table#blog_index span.tag {
+span.tag {
     color: #8a8;
     font-size: .7em;
+}
+span.tag a {
+    color: inherit;
+    text-decoration: inherit;
+}
+span.tag .delete {
+    color: red;
+}
+span.tag::before {
+    content: "#";
 }
 
 /*
@@ -322,9 +335,11 @@ pre span.bg_color5,  pre span.bg_magenta                        { background-col
 pre span.bg_color6,  pre span.bg_cyan                           { background-color: #7f9f7f; }
 pre span.bg_color7,  pre span.bg_white                          { background-color: #bebebe; }
 
+form table input[type="url"],
+form table input[type="text"],
+form table textarea { width: 100%; }
 
-
-
+form table th { text-align: left; }
 
 
 

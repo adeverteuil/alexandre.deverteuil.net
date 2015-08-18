@@ -16,7 +16,7 @@
         <tr>
             <td class="nowrap">{{ post.pub_date|date }}</td><td class="mdash">&mdash;</td>
             <td><span title="{{ post.summary }}"><a href="{% url 'blog:detail' post.slug %}">{{ post.title|safe }}</a></span>{% for category in post.categories.all %}
-            <span class="tag">#{{ category.name }}</span>{% endfor %}
+            <span class="tag">{{ category.name }}</span>{% endfor %}
             </td>
         </tr>{% endfor %}
     </table>{% else %}

@@ -1,3 +1,8 @@
 Django==1.7
 Pillow==2.5.3
+beautifulsoup4==4.4.0
+django-taggit==0.16.2
+html5lib==0.999999
 psycopg2==2.5.4
+pytz==2015.4
+six==1.9.0

@@ -7,7 +7,7 @@
 {% block headertitle %}{{ post.title|safe }}{% endblock %}
 {% block headerdate %}{{ post.pub_date|date }}{% endblock %}
 {% block description %}{{ post.summary }}{% endblock %}
-{% block crumbsblog %} &gt; {{ post.title|safe|truncatechars_html:30 }}{% endblock %}
+{% block crumbsblog %} <span class="sep">&gt;</span> {{ post.title|safe|truncatechars_html:30 }}{% endblock %}
 
 {% block content %}
 <article>

@@ -1,0 +1,9 @@
+{% load links_extras %}{% if is_paginated %}<nav>{% if page_obj.has_previous %}
+<a href="{% url "links:bookmark_archive" page=page_obj.previous_page_number year=year|date:"Y" %}{% query_transform %}">&larr; newer</a>{% else %}
+&larr; newer{% endif %} <span class="sep">|</span>{% if show_first %}
+{% include "links/_paginator_pagenum.html" with pagenum=1 %} … {% endif %}{% for pagenum in page_range %}
+{% include "links/_paginator_pagenum.html" %}{% if not forloop.last and not showlast %} <span class="sep">|</span>{% endif %}{% endfor %}{% if show_last %} …
+{% include "links/_paginator_pagenum.html" with pagenum=paginator.num_pages %}{% endif %}{% if page_obj.has_next %} <span class="sep">|</span>
+<a href="{% url "links:bookmark_archive" page=page_obj.next_page_number year=year|date:"Y" %}{% query_transform %}">older &rarr;</a>{% else %}
+older &rarr;{% endif %}
+</nav>{% endif %}
