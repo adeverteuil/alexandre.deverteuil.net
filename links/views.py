@@ -75,6 +75,15 @@ class BookmarkCreate(LoginRequiredMixin, CreateView):
         context['tags'] = Tag.objects.all().order_by("name")
         return context
 
+    def get_initial(self):
+        initial = {}
+        for key in self.fields:
+            try:
+                initial[key] = self.request.GET[key]
+            except KeyError:
+                pass
+        return initial
+
 
 class BookmarkUpdate(LoginRequiredMixin, UpdateView):
 
