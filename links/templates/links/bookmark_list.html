@@ -19,7 +19,8 @@
 </p>{% if bookmarks %}
 {% paginator %}{% for bookmark in bookmarks %}{% if not bookmark.private or user.is_authenticated %}
 <div class="bookmark">
-    <div class="rfloat">{{ bookmark.datetime_added|date:"Y-m-d" }}{% if user.is_authenticated %}<br />
+    <div class="rfloat">{{ bookmark.datetime_added|date:"Y-m-d" }}<br />
+    <a href="{% url "links:bookmark_detail" pk=bookmark.pk %}">permalien</a>{% if user.is_authenticated %}<br />
     <a href="{% url "links:bookmark_update" pk=bookmark.pk %}">edit</a><br />
     <a href="{% url "links:bookmark_delete" pk=bookmark.pk %}">delete</a><br />{% if bookmark.private %}
     private{% endif %}{% endif %}</div>{% if bookmark.url %}

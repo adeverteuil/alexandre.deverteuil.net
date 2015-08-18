@@ -18,7 +18,7 @@ class Bookmark(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("links:bookmark_update", kwargs={'pk': self.pk})
+        return reverse("links:bookmark_detail", kwargs={'pk': self.pk})
 
     class Meta:
         ordering = ("-datetime_added",)

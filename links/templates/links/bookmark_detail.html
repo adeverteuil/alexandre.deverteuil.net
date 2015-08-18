@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load static %}{% load links_extras %}
 
-{% block htmltitle %}Supprimer un lien{% endblock %}
-{% block headertitle %}Supprimer un lien{% endblock %}
+{% block htmltitle %}{{ bookmark.title }}{% endblock %}
+{% block description %}Lien partagé par Alexandre de Verteuil{% endblock %}
+{% block headertitle %}MicroBlogue{% endblock %}
 {% block crumbslinks %} <span class="sep">&gt;</span> N<sup>o</sup>&nbsp;{{ bookmark.pk }}{% endblock %}
 
 {% block body %}
-<section>
+<article>
 <div class="bookmark">
     <div class="rfloat">{{ bookmark.datetime_added|date:"Y-m-d" }}{% if user.is_authenticated %}<br />
     <a href="{% url "links:bookmark_update" pk=bookmark.pk %}">edit</a><br />
@@ -18,11 +19,5 @@
     {{ bookmark.description|linebreaksbr }}{% endif %}{% if bookmark.url %}<br />
     <code>{{ bookmark.url }}</code>{% endif %}</p>
 </div><!-- .bookmark -->
-<form action="." method="post">
-<p>Supprimer ce lien?</p>
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Oui, supprimer" />
-</form>
-</section>
-{% endblock %}
+</article>
+{% endblock body %}

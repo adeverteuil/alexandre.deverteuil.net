@@ -2,7 +2,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.dates import ArchiveIndexView, YearArchiveView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
@@ -55,6 +55,12 @@ class BookmarkArchiveIndex(BookmarkArchiveMixin, ArchiveIndexView):
 class BookmarkYearArchive(BookmarkArchiveMixin, YearArchiveView):
 
     make_object_list = True
+
+
+class BookmarkDetail(DetailView):
+
+    model = Bookmark
+    context_object_name = "bookmark"
 
 
 class LoginRequiredMixin:
