@@ -26,7 +26,7 @@
     <p><a href="{{ bookmark.url }}">{{ bookmark.title }}</a>{% else %}
     <p>{{ bookmark.title }}{% endif %}{% if bookmark.tags.count %}<br />
     {% for tag in bookmark.tags.all %}<span class="tag"><a href="{% url "links:bookmark_archive" year=year|date:"Y" %}{% query_transform "+tag="|add:tag.slug %}">{{ tag }}</a></span> {% endfor %}{% endif %}{% if bookmark.description %}<br />
-    {{ bookmark.description }}{% endif %}{% if bookmark.url %}<br />
+    {{ bookmark.description|linebreaksbr }}{% endif %}{% if bookmark.url %}<br />
     <code>{{ bookmark.url }}</code>{% endif %}</p>
 </div>{% endif %}{% endfor %}
 {% paginator %}{% else %}
