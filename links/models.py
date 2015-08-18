@@ -7,7 +7,7 @@ from taggit.managers import TaggableManager
 class Bookmark(models.Model):
 
     url = models.URLField()
-    title = models.CharField(max_length=64)
+    title = models.CharField(max_length=256)
     description = models.TextField()
     datetime_added = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
